@@ -2,9 +2,28 @@ from tkinter import *
 import random
 
 class Samok:
+    def endGame(self, winner):
+        self.label.configure(text=winner+'우승!!!')
     def check(self):
-        for item in self.checkList:
-            for r in range(6):
+        for r in range(6):
+            for c in range(7):
+                if self.buttonList[r*7+c]["text"] == '':
+                    self.count = 0
+                    self.temp = ''
+                elif self.count == 0:
+                    self.temp = self.buttonList[r*7+c]["text"]
+                    self.count = 1
+                else:
+                    if self.buttonList[r*7+c]["text"] == self.temp:
+                        self.count += 1
+                        self.temp = self.buttonList[r*7+c]["text"]
+                        if self.count == 4:
+                            self.endGame(self.buttonList[r*7+c]["text"])
+                    else:
+                        self.count = 1
+                        self.temp = self.buttonList[r*7+c]["text"]
+            self.count = 0
+
                 
     def again(self):
         for r in range(6):
