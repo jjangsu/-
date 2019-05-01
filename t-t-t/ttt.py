@@ -26,6 +26,14 @@ class TicTacToc:
 
     def check(self):
         self.full = True
+        for r in range(3):
+            for c in range(3):
+                if self.buttonList[r*3+c]["text"] == '':
+                    self.full = False
+        if self.full==True:
+            self.label.configure(text="무승부!")
+            self.endGame()
+
         for item in self.checkList:
             for r in range(3):
                 if self.buttonList[r*3]["text"]==self.buttonList[r*3+1]["text"]==self.buttonList[r*3+2]["text"]==item:
@@ -41,13 +49,6 @@ class TicTacToc:
                     self.label.configure(text=item+" 우승!!")
                     self.endGame()
 
-        for r in range(3):
-            for c in range(3):
-                if self.buttonList[r*3+c]["text"] == '':
-                    self.full = False
-        if self.full==True:
-            self.label.configure(text="무승부!")
-            self.endGame()
 
     def __init__(self):
         window = Tk()
