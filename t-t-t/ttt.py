@@ -26,6 +26,25 @@ class TicTacToc:
 
     def check(self):
         self.full = True
+
+        for item in self.checkList:
+            for r in range(3):
+                if self.buttonList[r*3]["text"]==self.buttonList[r*3+1]["text"]==self.buttonList[r*3+2]["text"]==item:
+                    self.label.configure(text=item+" 우승!!")
+                    self.endGame()
+                    return None
+                if self.buttonList[0*3+r]["text"]==self.buttonList[1*3+r]["text"]==self.buttonList[2*3+r]["text"]==item:
+                    self.label.configure(text=item+" 우승!!")
+                    self.endGame()
+                    return None
+                if self.buttonList[0]["text"]==self.buttonList[4]["text"]==self.buttonList[8]["text"]==item:
+                    self.label.configure(text=item+" 우승!!")
+                    self.endGame()
+                    return None
+                if self.buttonList[2]["text"]==self.buttonList[4]["text"]==self.buttonList[6]["text"]==item:
+                    self.label.configure(text=item+" 우승!!")
+                    self.endGame()
+                    return None
         for r in range(3):
             for c in range(3):
                 if self.buttonList[r*3+c]["text"] == '':
@@ -33,21 +52,6 @@ class TicTacToc:
         if self.full==True:
             self.label.configure(text="무승부!")
             self.endGame()
-
-        for item in self.checkList:
-            for r in range(3):
-                if self.buttonList[r*3]["text"]==self.buttonList[r*3+1]["text"]==self.buttonList[r*3+2]["text"]==item:
-                    self.label.configure(text=item+" 우승!!")
-                    self.endGame()
-                if self.buttonList[0*3+r]["text"]==self.buttonList[1*3+r]["text"]==self.buttonList[2*3+r]["text"]==item:
-                    self.label.configure(text=item+" 우승!!")
-                    self.endGame()
-                if self.buttonList[0]["text"]==self.buttonList[4]["text"]==self.buttonList[8]["text"]==item:
-                    self.label.configure(text=item+" 우승!!")
-                    self.endGame()
-                if self.buttonList[2]["text"]==self.buttonList[4]["text"]==self.buttonList[6]["text"]==item:
-                    self.label.configure(text=item+" 우승!!")
-                    self.endGame()
 
 
     def __init__(self):
