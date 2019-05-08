@@ -10,7 +10,7 @@ class RestArea:
         RAPhoto = PhotoImage(file='resource\R.gif')
         mailPhoto = PhotoImage(file='resource\mail.gif')
         Label(frame1, image=RAPhoto).pack(side=LEFT)
-        Label(frame1, image=mailPhoto).pack(side=LEFT)
+        Button(frame1, image=mailPhoto).pack(side=RIGHT)
 
         window.mainloop()
 
