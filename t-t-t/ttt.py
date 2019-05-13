@@ -4,6 +4,8 @@ import random
 class TicTacToc:
     def newGame(self):
         self.againButton.pack_forget()
+        self.turn = False
+        self.label.configure(text="o차례")
         for r in range(3):
             for c in range(3):
                 self.buttonList[r*3+c].configure(image=self.imageList[2], text='')
