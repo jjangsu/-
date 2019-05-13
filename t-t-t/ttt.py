@@ -4,7 +4,7 @@ import random
 class TicTacToc:
     def newGame(self):
         self.againButton.pack_forget()
-        self.turn = False
+        self.turn = True
         self.label.configure(text="o차례")
         for r in range(3):
             for c in range(3):
