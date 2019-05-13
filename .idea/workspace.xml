@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="066b97db-5dae-483f-aaf4-e5d5589645f0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/t-t-t/ttt.py" beforeDir="false" afterPath="$PROJECT_DIR$/t-t-t/ttt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/35/35.py" beforeDir="false" afterPath="$PROJECT_DIR$/35/35.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,7 +14,7 @@
     <session id="-1093498313">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.opened" value="2" />
@@ -32,35 +32,35 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="543" />
+          <entry key="py" value="562" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="543" />
+          <entry key="Python" value="562" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/35/35.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="20" column="72" selection-start-line="20" selection-start-column="72" selection-end-line="20" selection-end-column="72" />
+            <state relative-caret-position="399">
+              <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
-                <marker date="1556726540933" expanded="true" signature="130:135" ph="..." />
+                <marker date="1556790584238" expanded="true" signature="130:135" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/t-t-t/ttt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
+            <state relative-caret-position="437">
               <caret line="62" column="61" lean-forward="true" selection-start-line="62" selection-start-column="61" selection-end-line="62" selection-end-column="61" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -77,8 +77,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/35/35.py" />
         <option value="$PROJECT_DIR$/t-t-t/ttt.py" />
+        <option value="$PROJECT_DIR$/35/35.py" />
       </list>
     </option>
   </component>
@@ -131,7 +131,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ttt">
+  <component name="RunManager" selected="Python.35">
     <configuration name="35" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Script-Language-team-project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -180,8 +180,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ttt" />
         <item itemvalue="Python.35" />
+        <item itemvalue="Python.ttt" />
       </list>
     </recent_temporary>
   </component>
@@ -207,7 +207,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32894737" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32894737" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991228" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -225,23 +225,23 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/35/35.py">
+    <entry file="file://$PROJECT_DIR$/t-t-t/ttt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="72" selection-start-line="20" selection-start-column="72" selection-end-line="20" selection-end-column="72" />
+        <state relative-caret-position="437">
+          <caret line="62" column="61" lean-forward="true" selection-start-line="62" selection-start-column="61" selection-end-line="62" selection-end-column="61" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <marker date="1556726540933" expanded="true" signature="130:135" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/t-t-t/ttt.py">
+    <entry file="file://$PROJECT_DIR$/35/35.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="62" column="61" lean-forward="true" selection-start-line="62" selection-start-column="61" selection-end-line="62" selection-end-column="61" />
+        <state relative-caret-position="399">
+          <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
+            <marker date="1556790584238" expanded="true" signature="130:135" ph="..." />
           </folding>
         </state>
       </provider>
