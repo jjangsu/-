@@ -16,6 +16,9 @@ class RestArea:
     def Facility(self):
         pass
 
+    def showData(self):
+        pass
+
     def __init__(self):
         window = Tk()
         window.title = 'ReatArea'
