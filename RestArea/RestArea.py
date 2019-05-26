@@ -20,7 +20,7 @@ class RestArea:
         checkDataButton = 2
         self.showData()
 
-    def showData(self):
+    def showData(self): #이제 여기서 일을 쫌 해야겠죠
         global checkDataButton
         if checkDataButton == 0:    #음식점
             pass
@@ -69,7 +69,7 @@ class RestArea:
         self.mailButton = Button(self.window, image=self.mailPhoto, command=self.sendMail)
         self.mailButton.place(x=400, y=50)
 
-    def SearchRestAreaByName(self):
+    def SearchRestAreaByName(self): #함수를 한번에 못넘기겠어서 만든 친굽니다 그 옆에 휴게소 목록 리스트 초기화하고 다시 받아서 넣어줍니다
         global RestAreaList
         RestAreaList.clear()
         RestAreaList = SearchRestArea(self.searchBox.get())
