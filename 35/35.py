@@ -1,9 +1,10 @@
 from tkinter import *
-import random
+import numpy as np
 
 class Samok:
     def endGame(self, winner):
         self.label.configure(text=winner+'우승!!!')
+
     def check(self):    #가로
         for r in range(6):
             for c in range(7):
@@ -24,31 +25,52 @@ class Samok:
                         self.temp = self.buttonList[r*7+c]["text"]
             self.count = 0
 
-            for r in range(7):  #세로
-                for c in range(6):
-                    if self.buttonList[c*6+r]["text"] == '':
-                        self.count = 0
-                        self.temp = ''
-                    elif self.count == 0:
-                        self.temp = self.buttonList[c*6+r]["text"]
-                        self.count = 1
-                    else:
-                        if self.buttonList[c*6+r]["text"] == self.temp:
-                            self.count += 1
-                            self.temp = self.buttonList[c*6+r]["text"]
-                            if self.count == 4:
-                                self.endGame(self.buttonList[c*6+r]["text"])
+            for r in range(6, -1, -1):  #세로
+                self.count = 1
+                self.temp = ''
+                # print("--------")
+                for c in range(5, -1, -1):
+                    if self.buttonList[c*7+r]["text"] != '':
+                        self.temp = self.buttonList[c*7+r]["text"]
+                        # print("현재: " + self.buttonList[c*7+r]["text"])
+                        if self.temp == self.buttonList[(c - 1)*7+r]["text"]:
+                                self.count += 1
+                                # print("다음: " + self.buttonList[(c - 1)*7+r]["text"])
+                                # print(self.count)
                         else:
-                            self.count = 1
-                            self.temp = self.buttonList[c*6+r]["text"]
-                self.count = 0
+                                self.count = 1
+                                # print("다음: " + self.buttonList[(c - 1) * 7 + r]["text"])
+                                # print(self.count)
+                    if self.count >= 4:
+                        self.endGame(self.temp)
+
+            # 대각선
+            self.rightDown()
+
+    def rightDown(self):
+        temp = []
+        newLlist =[]
+        for r in range(6):
+            for c in range(7):
+                if self.buttonList[r*7+c]['text'] == '':
+                    temp[r][c] = 0
+                else:
+                    temp[r][c] = self.buttonList[r*7+c]['text']
+            newLlist.append(temp)
+            # temp.clear()
+        print(newLlist)
+        # temp = np.diag(self.buttonList)
+        # print(temp)
+        pass
 
                 
     def again(self):
+        self.turn = True
+        self.label.configure(text="o차례")
         for r in range(6):
             for c in range(7):
                 self.buttonList[r*7+c].configure(text='', image=self.imageList[2], command=lambda Row=r, Col=c: self.pressed(Row,Col))
-        self.turn = True
+        # self.turn = True
     def pressed(self,Row,Col):
         for r in range(5,-1,-1):
             if self.buttonList[r*7+Col]["text"]=='':
@@ -61,6 +83,7 @@ class Samok:
                 self.turn = not self.turn
                 self.check()
                 break
+
     def __init__(self):
         window = Tk()
         self.turn = True
