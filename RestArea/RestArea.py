@@ -1,24 +1,49 @@
 from tkinter import *
+from xml.dom.minidom import parse, parseString
 from test import SearchRestArea
+from Facility import SelectRestAreaFacility
 
 RestAreaList = []
+FacilityList = []
 checkDataButton = 0
+AllDoc = None
+xmlFD = -1
 
 class RestArea:
+
+    def LoadXMLFromFile(self):
+        global xmlFD, AllDoc
+        filename = 'RA.xml'
+        try:
+            xmlFD = open(filename)
+        except IOError:
+            print("invalid file name or path")
+        else:
+            try:
+                dom = parse(xmlFD)
+            except Exception:
+                print("loading fail!!!")
+            else:
+                print("XML Document loading complete")
+                AllDoc = dom
+                return dom
+        return None
+
+
     def food(self):
         global checkDataButton
         checkDataButton = 0
-        self.showData()
+        self.SelectRestArea()
 
     def GasStation(self):
         global checkDataButton
         checkDataButton = 1
-        self.showData()
+        self.SelectRestArea()
 
     def Facility(self):
         global checkDataButton
         checkDataButton = 2
-        self.showData()
+        self.SelectRestArea()
 
     def showData(self): #이제 여기서 일을 쫌 해야겠죠
         global checkDataButton
@@ -76,6 +101,22 @@ class RestArea:
         for i in range(len(RestAreaList)):
             self.searchList.insert(i,RestAreaList[i])
 
+    def SelectRestArea(self):
+        global checkDataButton
+        global RestAreaList
+        global FacilityList
+        FacilityList.clear()
+        iSearchIndex = self.searchList.curselection()
+        str = RestAreaList[iSearchIndex[0]]
+        str = str[0:2]
+        print(str)
+        if checkDataButton == 0:    #음식점
+            pass
+        elif checkDataButton == 1:  #주유소
+            pass
+        else:                       #편의시설
+            FacilityList = SelectRestAreaFacility(str)
+
 
     def initSearchCell(self):
         # 검색창과 그 옆에 목록
@@ -83,11 +124,12 @@ class RestArea:
         self.searchBox = Entry(self.window, width=30)
         self.searchBox.place(x=50, y=220)
 
-        Button(self.window, text='search', command=self.SearchRestAreaByName).place(x=280, y=220)
+        Button(self.window, text='search', command=self.SearchRestAreaByName).place(x=265, y=220)
         # 검색 목록
         #self.searchList = Text(self.window, width=30, height=5)
         self.searchList = Listbox(self.window, width=30, height=5)
-        self.searchList.place(x=360, y=220)
+        self.searchList.place(x=320, y=220)
+        Button(self.window, text='select', command=self.SelectRestArea).place(x=535, y=220)
 
 
     def __init__(self):
@@ -103,6 +145,7 @@ class RestArea:
         Logo = Label(self.window, image=self.RAPhoto)
         Logo.place(x=50, y=30)
 
+        self.LoadXMLFromFile()
         self.initEventData()
         self.initDataPhoto()
         self.initDataList()
