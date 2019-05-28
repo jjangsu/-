@@ -54,11 +54,18 @@ def putXmlToSearchList(strXml): # str을 그 원하는거만 찾아주는 친구
     itemElements = tree.getiterator("list")  # return list type
     # print(itemElements)
     for item in itemElements:
+        tmpList = []
         name = item.find("brand")
-        returnList.append(name.text)
+        tmpList.append(name.text)
         name = item.find("convenience")
-        returnList.append(name.text)
+        tmpList.append(name.text)
         name = item.find("serviceAreaCode") #휴게소 코드 시바것
-        returnList.append(name.text)
+        tmpList.append(name.text)
+        name = item.find("telNo")
+        tmpList.append(name.text)
+        name = item.find("batchMenu")
+        tmpList.append(name.text)
+
+        returnList.append(tmpList)
     # print(returnList)
     return returnList #여기도 이렇게 리턴해줍니더

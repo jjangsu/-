@@ -55,8 +55,8 @@ class RestArea:
 
     def initDataInfo(self):
         # 정보
-        dataInfo = Text(self.window, width=40, height=5)
-        dataInfo.place(x=50, y=550)
+        self.dataInfo = Text(self.window, width=40, height=5)
+        self.dataInfo.place(x=50, y=550)
 
     def initDataCategory(self):
         # 음식점
@@ -92,20 +92,43 @@ class RestArea:
         global RestAreaList
         global FacilityList
         FacilityList.clear()
+        self.dataList.delete(0, self.dataList.size())
+        self.dataInfo.delete('1.0', END)
+
         iSearchIndex = self.searchList.curselection()
         str = RestAreaList[iSearchIndex[0]]
         str = str[0:2]
-        # print(str)
+        print(str)
         if checkDataButton == 0:    #음식점
             pass
         elif checkDataButton == 1:  #주유소
             pass
         else:                       #편의시설
             FacilityList = SelectRestAreaFacility(str)
-            convenienceList = FacilityList[1].split('|')
-            # print(convenienceList)
+            print(FacilityList)
+            convenienceList = []
+            for data in FacilityList:
+                if data[1] is not None:
+                    tmp = data[1].split('|')
+                    # print(convenienceList)
+                    self.dataInfo.insert(INSERT, "전화번호: " + data[3] + "\n")
+                    self.dataInfo.insert(INSERT, "대표 메뉴: " + data[4] + "\n")
+                    self.dataInfo.insert(INSERT, "브랜드: " + data[0] + "\n")
+                    for item in tmp:
+                        if item is not '' and item not in convenienceList:
+                            convenienceList.append(item)
+                    # print(convenienceList)
             for i in range(len(convenienceList)):
-                self.dataList.insert(i, convenienceList[i])
+                if convenienceList[i] is not '':
+                    # if convenienceList[i] not in self.dataList:
+                    self.dataList.insert(i, convenienceList[i])
+
+
+
+        # tmp = findCon(str)
+        # print("------")
+        # print(tmp.find("psName").text)
+
 
 
 

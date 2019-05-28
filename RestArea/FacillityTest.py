@@ -20,7 +20,7 @@ def findCon(ConName):
             tmp = item.find("stdRestNm").text
             if ConName in tmp:
                 conSubRoot = ElementTree.Element("list")
-                ElementTree.SubElement(conRoot, "list").text = '리스트'
+                ElementTree.SubElement(conRoot, "list").text = ''
                 # conSubRoot = ElementTree.Element("list")
                 # conSubRoot.text = '리스트'
                 # conRoot.append(conSubRoot)
@@ -49,12 +49,13 @@ def findCon(ConName):
                     tmpNode3.text = item.find("psDesc").text
                     # print(tmpNode2.text)
                     conSubRoot.append(tmpNode3)
+    ElementTree.dump(conSubRoot)
     ElementTree.dump(conRoot)
-    print(conRoot)
-    print(conSubRoot)
     # print(ElementTree.tostring(conRoot).decode(('utf-8')))
     f.close()
+    # return ElementTree.fromstring(conRoot)
     return conRoot
+    # return conRoot
 
 
 # findCon("만남")
