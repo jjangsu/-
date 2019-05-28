@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from tkinter import *
 from xml.dom.minidom import parse, parseString
 from test import SearchRestArea
@@ -10,25 +11,6 @@ AllDoc = None
 xmlFD = -1
 
 class RestArea:
-
-    def LoadXMLFromFile(self):
-        global xmlFD, AllDoc
-        filename = 'RA.xml'
-        try:
-            xmlFD = open(filename)
-        except IOError:
-            print("invalid file name or path")
-        else:
-            try:
-                dom = parse(xmlFD)
-            except Exception:
-                print("loading fail!!!")
-            else:
-                print("XML Document loading complete")
-                AllDoc = dom
-                return dom
-        return None
-
 
     def food(self):
         global checkDataButton
@@ -146,7 +128,7 @@ class RestArea:
         Logo = Label(self.window, image=self.RAPhoto)
         Logo.place(x=50, y=30)
 
-        # self.LoadXMLFromFile()
+        self.LoadXMLFromFile()
         self.initEventData()
         self.initDataPhoto()
         self.initDataList()
