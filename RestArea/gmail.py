@@ -4,6 +4,10 @@ import mysmtplib
 from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
 
+
+def sendGmail():
+    pass
+
 #global value
 host = "smtp.gmail.com" # Gmail STMP 서버 주소.
 port = "587"

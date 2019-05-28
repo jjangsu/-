@@ -3,6 +3,7 @@ from tkinter import *
 from xml.dom.minidom import parse, parseString
 from test import SearchRestArea
 from Facility import SelectRestAreaFacility
+from gmail import sendGmail
 
 RestAreaList = []
 FacilityList = []
@@ -37,7 +38,7 @@ class RestArea:
             pass
 
     def sendMail(self):
-        pass
+        sendGmail()
 
     def initDataPhoto(self):
         # 사진
