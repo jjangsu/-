@@ -40,12 +40,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="5576" />
+          <entry key="py" value="5584" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="5576" />
+          <entry key="Python" value="5584" />
         </counts>
       </usages-collector>
     </session>
@@ -61,27 +61,28 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RestArea.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="39" column="23" lean-forward="true" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
+            <state relative-caret-position="190">
+              <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
               <folding>
                 <element signature="e#24#45#0" expanded="true" />
-                <marker date="1559052075211" expanded="true" signature="909:935" ph="..." />
+                <marker date="1559052627881" expanded="true" signature="923:932" ph="..." />
+                <marker date="1559052627881" expanded="true" signature="923:950" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gmail.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+            <state relative-caret-position="170">
+              <caret line="57" selection-start-line="57" selection-end-line="57" />
               <folding>
                 <element signature="e#24#40#0" expanded="true" />
-                <marker date="1559052075183" expanded="true" signature="150:161" ph="..." />
+                <marker date="1559052570103" expanded="true" signature="249:1565" ph="..." />
               </folding>
             </state>
           </provider>
@@ -141,8 +142,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="552" />
-    <option name="width" value="1378" />
+    <option name="x" value="948" />
+    <option name="width" value="979" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -282,10 +283,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="442" y="0" width="1102" height="840" extended-state="0" />
+    <frame x="759" y="0" width="783" height="840" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15680751" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22386059" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -389,24 +390,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RestArea.py">
+    <entry file="file://$PROJECT_DIR$/gmail.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="39" column="23" lean-forward="true" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
+        <state relative-caret-position="170">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
           <folding>
-            <element signature="e#24#45#0" expanded="true" />
-            <marker date="1559052075211" expanded="true" signature="909:935" ph="..." />
+            <element signature="e#24#40#0" expanded="true" />
+            <marker date="1559052570103" expanded="true" signature="249:1565" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gmail.py">
+    <entry file="file://$PROJECT_DIR$/RestArea.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+        <state relative-caret-position="190">
+          <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
           <folding>
-            <element signature="e#24#40#0" expanded="true" />
-            <marker date="1559052075183" expanded="true" signature="150:161" ph="..." />
+            <element signature="e#24#45#0" expanded="true" />
+            <marker date="1559052627881" expanded="true" signature="923:932" ph="..." />
+            <marker date="1559052627881" expanded="true" signature="923:950" ph="..." />
           </folding>
         </state>
       </provider>
