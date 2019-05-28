@@ -1,5 +1,5 @@
 from tkinter import *
-import numpy as np
+# import numpy as np
 
 class Samok:
     def endGame(self, winner):
