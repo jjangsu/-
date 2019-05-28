@@ -5,9 +5,11 @@ from test import SearchRestArea
 from Facility import SelectRestAreaFacility, putXmlToSearchList
 from gmail import sendGmail
 from FacillityTest import findCon
+from Event import findEventByName
 
 RestAreaList = []
 FacilityList = []
+EventList = []
 checkDataButton = 0
 AllDoc = None
 xmlFD = -1
@@ -70,8 +72,15 @@ class RestArea:
         categoryFacility.place(x=170, y=300)
 
     def initEventData(self):
-        eventList = Text(self.window, width=75, height=5)
-        eventList.place(x=50, y=650)
+        self.eventList = Text(self.window, width=75, height=5)
+        self.eventList.place(x=50, y=650)
+
+    def printEvent(self, name):
+        global EventList
+        EventList.clear()
+        EventList = findEventByName(name)
+        self.eventList.delete('1.0',END)
+        self.eventList.insert(INSERT, EventList)
 
     def intiSendGmail(self):
         # Gmail보내는 버튼
@@ -99,6 +108,7 @@ class RestArea:
         str = RestAreaList[iSearchIndex[0]]
         str = str[0:2]
         print(str)
+        self.printEvent(str)
         if checkDataButton == 0:    #음식점
             pass
         elif checkDataButton == 1:  #주유소
