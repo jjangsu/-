@@ -2140,9 +2140,7 @@
 <lsttmAltrDttm>2019-05-02</lsttmAltrDttm>
 <lsttmAltrUser>SYSTEM</lsttmAltrUser>
 <psCode>99</psCode>
-<psDesc>
-본관 매장 무인 안내소 운영 - 관광지도, PC&FAX이용, 건강코너, 도로공사&하이플러스카드 전자카드 무인기계 등 이용가능하십니다.
-</psDesc>
+<psDesc>본관 매장 무인 안내소 운영 - 관광지도, PC,FAX이용, 건강코너, 도로공사,하이플러스카드 전자카드 무인기계 등 이용가능하십니다.</psDesc>
 <psName>기타</psName>
 <redDtime>19/03/07</redDtime>
 <redId>S000064001</redId>
@@ -2245,7 +2243,7 @@
 <lsttmAltrDttm>2019-05-02</lsttmAltrDttm>
 <lsttmAltrUser>SYSTEM</lsttmAltrUser>
 <psCode>12</psCode>
-<psDesc>자판기 하우스 앞 & 장애인화장실 앞</psDesc>
+<psDesc>자판기 하우스 앞 , 장애인화장실 앞</psDesc>
 <psName>ATM</psName>
 <redDtime>16/07/14</redDtime>
 <redId>S000073001</redId>
@@ -2310,7 +2308,7 @@
 <lsttmAltrDttm>2019-05-02</lsttmAltrDttm>
 <lsttmAltrUser>SYSTEM</lsttmAltrUser>
 <psCode>12</psCode>
-<psDesc>자판기 하우스 앞 & 장애인화장실 앞</psDesc>
+<psDesc>자판기 하우스 앞 , 장애인화장실 앞</psDesc>
 <psName>ATM</psName>
 <redDtime>16/07/16</redDtime>
 <redId>S000074001</redId>
