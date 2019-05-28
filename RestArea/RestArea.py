@@ -65,8 +65,8 @@ class RestArea:
 
     def initDataList(self):
         # 목록
-        dataList = Listbox(self.window, activestyle='none', width=35, height=18)
-        dataList.place(x=333, y=330)
+        self.dataList = Listbox(self.window, activestyle='none', width=35, height=18)
+        self.dataList.place(x=333, y=330)
 
     def initDataInfo(self):
         # 정보
@@ -117,6 +117,10 @@ class RestArea:
             pass
         else:                       #편의시설
             FacilityList = SelectRestAreaFacility(str)
+            convenienceList = FacilityList[1].split('|')
+            print(convenienceList)
+            for i in range(len(convenienceList)):
+                self.dataList.insert(i, convenienceList[i])
 
 
     def initSearchCell(self):
@@ -139,7 +143,7 @@ class RestArea:
 
         self.window = Tk()
         self.window.title = 'ReatArea'
-        self.window.geometry('600x750+100+0')
+        self.window.geometry('600x750+800+0')
 
         # 우리 메인 로고
         self.RAPhoto = PhotoImage(file='resource\R.gif')
