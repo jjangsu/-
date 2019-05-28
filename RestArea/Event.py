@@ -24,15 +24,15 @@ def findEventByName(name):
         #print("-------------")
         #print(temp)
 
-        print(req.status)
+        # print(req.status)
         if int(req.status) == 200:
-            print("Book data downloading complete!")
+            # print("Book data downloading complete!")
             #print(req.read().decode(('utf-8')))
             tt = putXmlToSearchList(temp, name)  # 파싱한거를 str통체로 저 함수에 넘깁니다 return 보이죠? 저런식으로 RestArea에 값을 넘겨줘야해유 여기서 ReatArea변수에 접근할 수 없어유
             if len(tt) != 0:
                 return tt
         else:
-            print("OpenAPI request has been failed!! please retry")
+            # print("OpenAPI request has been failed!! please retry")
             return None
 
 
@@ -50,7 +50,7 @@ def putXmlToSearchList(strXml, name): # str을 그 원하는거만 찾아주는 
                 event = item.find("eventDetail")
                 returnList.append(event.text)
     if len(returnList) != 0:
-        print('*******************')
+        # print('*******************')
         print(returnList)
     return returnList #여기도 이렇게 리턴해줍니더
 

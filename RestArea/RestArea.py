@@ -31,6 +31,23 @@ class RestArea:
         checkDataButton = 2
         self.SelectRestArea()
 
+        convenienceList = []
+        for data in FacilityList:
+            if data[1] is not None:
+                tmp = data[1].split('|')
+                # print(convenienceList)
+                self.dataInfo.insert(INSERT, "전화번호: " + data[3] + "\n")
+                self.dataInfo.insert(INSERT, "대표 메뉴: " + data[4] + "\n")
+                self.dataInfo.insert(INSERT, "브랜드: " + data[0] + "\n")
+                for item in tmp:
+                    if item is not '' and item not in convenienceList:
+                        convenienceList.append(item)
+                # print(convenienceList)
+        for i in range(len(convenienceList)):
+            if convenienceList[i] is not '':
+                # if convenienceList[i] not in self.dataList:
+                self.dataList.insert(i, convenienceList[i])
+
     def showData(self): #이제 여기서 일을 쫌 해야겠죠
         global checkDataButton
         if checkDataButton == 0:    #음식점
@@ -77,10 +94,14 @@ class RestArea:
 
     def printEvent(self, name):
         global EventList
-        EventList.clear()
+        if EventList is not None:
+            EventList.clear()
         EventList = findEventByName(name)
         self.eventList.delete('1.0',END)
-        self.eventList.insert(INSERT, EventList)
+        if EventList is not None:
+            self.eventList.insert(INSERT, EventList)
+        else:
+            self.eventList.insert(INSERT, "이벤트 없음")
 
     def intiSendGmail(self):
         # Gmail보내는 버튼
@@ -107,7 +128,7 @@ class RestArea:
         iSearchIndex = self.searchList.curselection()
         str = RestAreaList[iSearchIndex[0]]
         str = str[0:2]
-        print(str)
+        # print(str)
         self.printEvent(str)
         if checkDataButton == 0:    #음식점
             pass
@@ -115,23 +136,8 @@ class RestArea:
             pass
         else:                       #편의시설
             FacilityList = SelectRestAreaFacility(str)
-            print(FacilityList)
-            convenienceList = []
-            for data in FacilityList:
-                if data[1] is not None:
-                    tmp = data[1].split('|')
-                    # print(convenienceList)
-                    self.dataInfo.insert(INSERT, "전화번호: " + data[3] + "\n")
-                    self.dataInfo.insert(INSERT, "대표 메뉴: " + data[4] + "\n")
-                    self.dataInfo.insert(INSERT, "브랜드: " + data[0] + "\n")
-                    for item in tmp:
-                        if item is not '' and item not in convenienceList:
-                            convenienceList.append(item)
-                    # print(convenienceList)
-            for i in range(len(convenienceList)):
-                if convenienceList[i] is not '':
-                    # if convenienceList[i] not in self.dataList:
-                    self.dataList.insert(i, convenienceList[i])
+            # print(FacilityList)
+
 
 
 
