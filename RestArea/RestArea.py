@@ -2,8 +2,9 @@
 from tkinter import *
 from xml.dom.minidom import parse, parseString
 from test import SearchRestArea
-from Facility import SelectRestAreaFacility
+from Facility import SelectRestAreaFacility, putXmlToSearchList
 from gmail import sendGmail
+from FacillityTest import findCon
 
 RestAreaList = []
 FacilityList = []
@@ -81,7 +82,7 @@ class RestArea:
     def SearchRestAreaByName(self): #함수를 한번에 못넘기겠어서 만든 친굽니다 그 옆에 휴게소 목록 리스트 초기화하고 다시 받아서 넣어줍니다
         global RestAreaList
         RestAreaList.clear()
-        print(self.searchBox.get())
+        # print(self.searchBox.get())
         RestAreaList = SearchRestArea(self.searchBox.get())
         for i in range(len(RestAreaList)):
             self.searchList.insert(i,RestAreaList[i])
@@ -94,7 +95,7 @@ class RestArea:
         iSearchIndex = self.searchList.curselection()
         str = RestAreaList[iSearchIndex[0]]
         str = str[0:2]
-        print(str)
+        # print(str)
         if checkDataButton == 0:    #음식점
             pass
         elif checkDataButton == 1:  #주유소
@@ -102,9 +103,10 @@ class RestArea:
         else:                       #편의시설
             FacilityList = SelectRestAreaFacility(str)
             convenienceList = FacilityList[1].split('|')
-            print(convenienceList)
+            # print(convenienceList)
             for i in range(len(convenienceList)):
                 self.dataList.insert(i, convenienceList[i])
+
 
 
     def initSearchCell(self):

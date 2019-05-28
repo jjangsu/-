@@ -49,10 +49,10 @@ def SelectRestAreaFacility(name):   # 파싱하는 친구에유
 def putXmlToSearchList(strXml): # str을 그 원하는거만 찾아주는 친구에유
     returnList = []
     tree = ElementTree.fromstring(strXml)
-    print (strXml)
+    print(strXml)
 
     itemElements = tree.getiterator("list")  # return list type
-    print(itemElements)
+    # print(itemElements)
     for item in itemElements:
         name = item.find("brand")
         returnList.append(name.text)
@@ -60,5 +60,5 @@ def putXmlToSearchList(strXml): # str을 그 원하는거만 찾아주는 친구
         returnList.append(name.text)
         name = item.find("serviceAreaCode") #휴게소 코드 시바것
         returnList.append(name.text)
-    print(returnList)
+    # print(returnList)
     return returnList #여기도 이렇게 리턴해줍니더
