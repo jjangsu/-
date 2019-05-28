@@ -1,6 +1,9 @@
+# ㅡ*ㅡ coding: utf8 -*-
 import urllib
 import http.client
 from xml.etree import ElementTree
+from xml.dom.minidom import parseString
+
 routeNoToName = {'경부선':'0010', '남해선':'0100', '88올림픽선':'0120', '무안광주선':'0121 ', '고창담양선':'0140',
                  '서해안선': '0150  ', '평택시흥선':'0153  ', '울산선':'0160', '평택화성선':'0170', '대구포항선':'0200',
                  '익산장수선': '0201', '호남선':'0251', '천안논산선':'0252', '순천완주선':'0270', '청원상주선':'0300',
@@ -17,7 +20,8 @@ def routeURLBuilder(name):  # URL 만들때는 모두 이런 형식으로 만들
     return str
 
 def SelectRestAreaFacility(name):   # 파싱하는 친구에유
-    conn = http.client.HTTPConnection("data.ex.co.kr")
+    # conn = http.client.HTTPConnection("data.ex.co.kr")
+    conn = http.client.HTTPConnection("data.go.kr")
     hangul_utf8 = urllib.parse.quote("한국산업기술대학교")
     uri = routeURLBuilder(name)
     conn.request("GET", uri, None)
@@ -30,10 +34,11 @@ def SelectRestAreaFacility(name):   # 파싱하는 친구에유
     print(req.status)
     if int(req.status) == 200:
         print("Book data downloading complete!")
-        return putXmlToSearchList(req.read())   # 파싱한거를 str통체로 저 함수에 넘깁니다 return 보이죠? 저런식으로 RestArea에 값을 넘겨줘야해유 여기서 ReatArea변수에 접근할 수 없어유
+        return putXmlToSearchList(parseString(req.read().decode('utf-8')).toprettyxml())   # 파싱한거를 str통체로 저 함수에 넘깁니다 return 보이죠? 저런식으로 RestArea에 값을 넘겨줘야해유 여기서 ReatArea변수에 접근할 수 없어유
     else:
         print("OpenAPI request has been failed!! please retry")
         return None
+
 
 def putXmlToSearchList(strXml): # str을 그 원하는거만 찾아주는 친구에유
     returnList = []

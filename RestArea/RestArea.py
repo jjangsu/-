@@ -97,6 +97,7 @@ class RestArea:
     def SearchRestAreaByName(self): #함수를 한번에 못넘기겠어서 만든 친굽니다 그 옆에 휴게소 목록 리스트 초기화하고 다시 받아서 넣어줍니다
         global RestAreaList
         RestAreaList.clear()
+        print(self.searchBox.get())
         RestAreaList = SearchRestArea(self.searchBox.get())
         for i in range(len(RestAreaList)):
             self.searchList.insert(i,RestAreaList[i])
@@ -145,7 +146,7 @@ class RestArea:
         Logo = Label(self.window, image=self.RAPhoto)
         Logo.place(x=50, y=30)
 
-        self.LoadXMLFromFile()
+        # self.LoadXMLFromFile()
         self.initEventData()
         self.initDataPhoto()
         self.initDataList()
@@ -153,5 +154,5 @@ class RestArea:
         self.initDataCategory()
         self.intiSendGmail()
         self.initSearchCell()
-        #self.window.mainloop()
+        self.window.mainloop()
 

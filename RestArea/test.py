@@ -11,7 +11,8 @@ routeNoToName = {'경부선':'0010', '남해선':'0100', '88올림픽선':'0120'
 
 DataList = []
 #http://data.ex.co.kr/exopenapi/locationinfo/locationinfoRest?serviceKey=jyWeFegnALTcwvSFHvgeaQYIhtirRuGHTyB5YYxZNpQmWoQGf7EQc5%2F9Jsb6vw1kxdc0QhsfiT78%2BEyDQKIEyQ%3D%3D&type=xml&routeNo=0100&numOfRows=10&pageNo=1
-
+# 편의 시설 현황
+#http://data.ex.co.kr/exopenapi/business/serviceAreaRoute?serviceKey=jyWeFegnALTcwvSFHvgeaQYIhtirRuGHTyB5YYxZNpQmWoQGf7EQc5%2F9Jsb6vw1kxdc0QhsfiT78%2BEyDQKIEyQ%3D%3D&type=xml&numOfRows=10&pageNo=1
 def routeURLBuilder(name):  # URL 만들때는 모두 이런 형식으로 만들면 될꺼같아유 이거 복붙해서 함수 이름이랑 내용만 바꿉니다
     str = '/exopenapi/locationinfo/locationinfoRest?serviceKey=jyWeFegnALTcwvSFHvgeaQYIhtirRuGHTyB5YYxZNpQmWoQGf7EQc5%2F9Jsb6vw1kxdc0QhsfiT78%2BEyDQKIEyQ%3D%3D&type=xml&routeNo='
     str += routeNoToName.get(name)
@@ -24,11 +25,11 @@ def SearchRestArea(name):   # 파싱하는 친구에유
     uri = routeURLBuilder(name)
     conn.request("GET", uri)
     req = conn.getresponse()
-    print(req.status, req.reason)
+    # print(req.status, req.reason)
     #print(req.read().decode('utf-8'))
 
     if int(req.status) == 200:
-        print("Book data downloading complete!")
+        # print("Book data downloading complete!")
         return putXmlToSearchList(req.read())   # 파싱한거를 str통체로 저 함수에 넘깁니다 return 보이죠? 저런식으로 RestArea에 값을 넘겨줘야해유 여기서 ReatArea변수에 접근할 수 없어유
     else:
         print("OpenAPI request has been failed!! please retry")
