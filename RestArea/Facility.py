@@ -14,27 +14,33 @@ DataList = []
 def routeURLBuilder(name):  # URL 만들때는 모두 이런 형식으로 만들면 될꺼같아유 이거 복붙해서 함수 이름이랑 내용만 바꿉니다
     #str = '/exopenapi/business/serviceAreaRoute?serviceKey=jyWeFegnALTcwvSFHvgeaQYIhtirRuGHTyB5YYxZNpQmWoQGf7EQc5%2F9Jsb6vw1kxdc0QhsfiT78%2BEyDQKIEyQ%3D%3D&type=xml&serviceAreaName='
     str = '/exopenapi/business/serviceAreaRoute?serviceKey=jyWeFegnALTcwvSFHvgeaQYIhtirRuGHTyB5YYxZNpQmWoQGf7EQc5%2F9Jsb6vw1kxdc0QhsfiT78%2BEyDQKIEyQ%3D%3D&type=xml&serviceAreaName='
-    str += '%EA%B8%B0%ED%9D%A5'
-    #str += name
+    # str += '%EA%B8%B0%ED%9D%A5'
+    hangul_utf8 = urllib.parse.quote(name)
+    str += hangul_utf8
     str += '&numOfRows=10&pageNo=1'
     return str
 
 def SelectRestAreaFacility(name):   # 파싱하는 친구에유
     # conn = http.client.HTTPConnection("data.ex.co.kr")
-    conn = http.client.HTTPConnection("data.go.kr")
-    hangul_utf8 = urllib.parse.quote("한국산업기술대학교")
+    conn = http.client.HTTPConnection("data.ex.co.kr")
+    # hangul_utf8 = urllib.parse.quote("한국산업기술대학교")
     uri = routeURLBuilder(name)
-    conn.request("GET", uri, None)
+    conn.request("GET", uri)
     req = conn.getresponse()
     #print(req.status, req.reason)
     #print(req.read().decode('utf-8'))
     print(req.status, req.reason)
-    print(req.read().decode('utf-8'))
+    # print(req.read().decode('utf-8'))
+    temp = req.read().decode(('utf-8'))
+    print("-------------")
+    print(temp)
 
     print(req.status)
     if int(req.status) == 200:
         print("Book data downloading complete!")
-        return putXmlToSearchList(parseString(req.read().decode('utf-8')).toprettyxml())   # 파싱한거를 str통체로 저 함수에 넘깁니다 return 보이죠? 저런식으로 RestArea에 값을 넘겨줘야해유 여기서 ReatArea변수에 접근할 수 없어유
+        print(req.read().decode(('utf-8')))
+
+        return putXmlToSearchList(temp)   # 파싱한거를 str통체로 저 함수에 넘깁니다 return 보이죠? 저런식으로 RestArea에 값을 넘겨줘야해유 여기서 ReatArea변수에 접근할 수 없어유
     else:
         print("OpenAPI request has been failed!! please retry")
         return None
