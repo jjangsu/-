@@ -132,7 +132,7 @@ class RestArea:
         Logo = Label(self.window, image=self.RAPhoto)
         Logo.place(x=50, y=30)
 
-        self.LoadXMLFromFile()
+        #self.LoadXMLFromFile()
         self.initEventData()
         self.initDataPhoto()
         self.initDataList()
