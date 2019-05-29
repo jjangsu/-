@@ -7,30 +7,64 @@ from gasStation import SelectRestAreaGas
 from gmail import sendGmail
 from FacillityTest import findCon
 from Event import findEventByName
+from Food import getAllFoodData
+from Food import findFoodtByName
 
 
 RestAreaList = []
 FacilityList = []
+FoodList = []
 GasStationList = []
 EventList = []
 checkDataButton = 0
 AllDoc = None
 xmlFD = -1
 RestAreaName = ''
+isFirstTimeGetFood = True
 buttonColor = 'lavender'
 bgColor = 'thistle'
+checkColor = 'pink'
+
 
 class RestArea:
 
+    def changSelectButtonColor(self):
+        global checkDataButton
+        if checkDataButton == 0:    #음식
+            self.categoryFood.configure(background=checkColor)
+            self.categoryGas.configure(background=buttonColor)
+            self.categoryFacility.configure(background=buttonColor)
+        elif checkDataButton == 1:  #주유소
+            self.categoryFood.configure(background=buttonColor)
+            self.categoryGas.configure(background=checkColor)
+            self.categoryFacility.configure(background=buttonColor)
+            pass
+        else:                       #휴게소
+            self.categoryFood.configure(background=buttonColor)
+            self.categoryGas.configure(background=buttonColor)
+            self.categoryFacility.configure(background=checkColor)
+            pass
+
     def food(self):
         global checkDataButton
+        global FoodList
         checkDataButton = 0
         self.ClearDataBox()
+        self.changSelectButtonColor()
+
+        FoodList = findFoodtByName(RestAreaName)
+
+        for i in range(len(FoodList)):
+            if FoodList[i] is not '':
+                self.dataList.insert(i, FoodList[i][1])
+
+
 
     def GasStation(self):
         global checkDataButton
         checkDataButton = 1
         self.ClearDataBox()
+        self.changSelectButtonColor()
 
         print("------------")
         print(RestAreaName)
@@ -52,6 +86,7 @@ class RestArea:
         global RestAreaName
         checkDataButton = 2
         self.ClearDataBox()
+        self.changSelectButtonColor()
 
         FacilityList.clear()
         FacilityList = SelectRestAreaFacility(RestAreaName)
@@ -97,11 +132,23 @@ class RestArea:
         webbrowser.open('osm.html')
 
 
+    def onclick_event(self, evt):
+        global FoodList
+        global checkDataButton
+        if checkDataButton == 0:
+            self.dataInfo.delete('1.0', END)
+            a = evt.widget.curselection()[0]
+            if FoodList[a] is not None:
+                self.dataInfo.insert(INSERT, "price: " + FoodList[a][2] + "\n")
+                self.dataInfo.insert(INSERT, "informaiton: " + FoodList[a][3] + "\n")
 
     def initDataList(self):
         # 목록
         self.dataList = Listbox(self.window, activestyle='none', width=35, height=18)
+        self.dataList.bind('<<ListboxSelect>>', self.onclick_event)
         self.dataList.place(x=333, y=330)
+        self.dataList.selection_clear(0, END)
+
 
     def initDataInfo(self):
         # 정보
@@ -111,14 +158,14 @@ class RestArea:
     def initDataCategory(self):
         global buttonColor
         # 음식점
-        categoryFood = Button(self.window, text="음식점", width=8, command=self.food, background=buttonColor)
-        categoryFood.place(x=50, y=300)
+        self.categoryFood = Button(self.window, text="음식점", width=8, command=self.food, background=buttonColor)
+        self.categoryFood.place(x=50, y=300)
         # 주유소
-        categoryGas = Button(self.window, text='주유소', width=8, command=self.GasStation, background=buttonColor)
-        categoryGas.place(x=110, y=300)
+        self.categoryGas = Button(self.window, text='주유소', width=8, command=self.GasStation, background=buttonColor)
+        self.categoryGas.place(x=110, y=300)
         # 편의시설
-        categoryFacility = Button(self.window, text='편의시설', width=8, command=self.Facility, background=buttonColor)
-        categoryFacility.place(x=170, y=300)
+        self.categoryFacility = Button(self.window, text='편의시설', width=8, command=self.Facility, background=buttonColor)
+        self.categoryFacility.place(x=170, y=300)
 
     def initEventData(self):
         self.eventList = Text(self.window, width=75, height=5)
@@ -143,9 +190,9 @@ class RestArea:
         # Gmail보내는 버튼
         self.mailPhoto = PhotoImage(file='resource\_newMail.png')
         self.mailButton = Button(self.window, image=self.mailPhoto, command=self.sendMail, background=bgColor, activebackground='red')
-        self.mailButton.place(x=400, y=100)
+        self.mailButton.place(x=423, y=60)
         self.mailEntry = Entry(self.window)
-        self.mailEntry.place(x=375, y=170)
+        self.mailEntry.place(x=395, y=140)
 
     def SearchRestAreaByName(self): #함수를 한번에 못넘기겠어서 만든 친굽니다 그 옆에 휴게소 목록 리스트 초기화하고 다시 받아서 넣어줍니다
         global RestAreaList
@@ -168,6 +215,7 @@ class RestArea:
         global RestAreaList
         global FacilityList
         global RestAreaName
+        global isFirstTimeGetFood
 
         iSearchIndex = self.searchList.curselection()
         str = RestAreaList[iSearchIndex[0]][0]
@@ -180,6 +228,10 @@ class RestArea:
             self.openWebMap(RestAreaList[iSearchIndex[0]][1], RestAreaList[iSearchIndex[0]][2])
 
         self.printEvent(str)
+
+        if isFirstTimeGetFood == True:
+            isFirstTimeGetFood = False
+            getAllFoodData()
         if checkDataButton == 0:    #음식점
             self.food()
         elif checkDataButton == 1:  #주유소
@@ -187,9 +239,6 @@ class RestArea:
             # self.GasStation(RestAreaName)
         else:                       #편의시설
             self.Facility()
-        # tmp = findCon(str)
-        # print("------")
-        # print(tmp.find("psName").text)
 
 
 
@@ -227,7 +276,6 @@ class RestArea:
         Logo = Label(self.window, image=self.RAPhoto, background=bgColor)
         Logo.place(x=50, y=30)
 
-        #self.LoadXMLFromFile()
         self.initEventData()
         # self.initDataPhoto(0, 0)
         self.initDataList()
