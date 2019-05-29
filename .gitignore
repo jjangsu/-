@@ -1,3 +1,9 @@
 
 RestArea/__pycache__/RestArea.cpython-37.pyc
 RestArea/__pycache__/test.cpython-37.pyc
+*.py
+RestArea/__pycache__/FacillityTest.cpython-37.pyc
+RestArea/__pycache__/Event.cpython-37.pyc
+RestArea/__pycache__/Facility.cpython-37.pyc
+*.pyc
+*.pyc

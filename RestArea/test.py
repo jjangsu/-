@@ -12,6 +12,8 @@ routeNoToName = {'경부선':'0010', '남해선':'0100', '광주대구선':'0120
                  '서울외곽순환선': '1000', '남해2지선':'1040', '서천공주선':'1510', '호남지선':'2510', '중부내륙지선':'4510'
                  }
 
+#안되는거 :
+
 DataList = []
 #http://data.ex.co.kr/exopenapi/locationinfo/locationinfoRest?serviceKey=jyWeFegnALTcwvSFHvgeaQYIhtirRuGHTyB5YYxZNpQmWoQGf7EQc5%2F9Jsb6vw1kxdc0QhsfiT78%2BEyDQKIEyQ%3D%3D&type=xml&routeNo=0100&numOfRows=10&pageNo=1
 # 편의 시설 현황
