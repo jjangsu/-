@@ -49,9 +49,9 @@ def putXmlToSearchList(strXml, name): # str을 그 원하는거만 찾아주는 
             if name in temp:
                 event = item.find("eventDetail")
                 returnList.append(event.text)
-    if len(returnList) != 0:
+    #if len(returnList) != 0:
         # print('*******************')
-        print(returnList)
+        #print(returnList)
     return returnList #여기도 이렇게 리턴해줍니더
 
 

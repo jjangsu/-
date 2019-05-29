@@ -13,23 +13,29 @@ EventList = []
 checkDataButton = 0
 AllDoc = None
 xmlFD = -1
+RestAreaName = ''
 
 class RestArea:
 
     def food(self):
         global checkDataButton
         checkDataButton = 0
-        self.SelectRestArea()
+        self.ClearDataBox()
 
     def GasStation(self):
         global checkDataButton
         checkDataButton = 1
-        self.SelectRestArea()
+        self.ClearDataBox()
 
     def Facility(self):
         global checkDataButton
+        global FacilityList
+        global RestAreaName
         checkDataButton = 2
-        self.SelectRestArea()
+        self.ClearDataBox()
+
+        FacilityList.clear()
+        FacilityList = SelectRestAreaFacility(RestAreaName)
 
         convenienceList = []
         for data in FacilityList:
@@ -128,30 +134,32 @@ class RestArea:
         for i in range(len(RestAreaList)):
             self.searchList.insert(i,RestAreaList[i][0])
 
+
+    def ClearDataBox(self):
+        self.dataList.delete(0, self.dataList.size())
+        self.dataInfo.delete('1.0', END)
+
     def SelectRestArea(self):
         global checkDataButton
         global RestAreaList
         global FacilityList
-
-        self.dataList.delete(0, self.dataList.size())
-        self.dataInfo.delete('1.0', END)
+        global RestAreaName
 
         iSearchIndex = self.searchList.curselection()
         str = RestAreaList[iSearchIndex[0]][0]
         str = str[0:2]
+        RestAreaName = str
         # print(str)
 
         self.openWebMap(RestAreaList[iSearchIndex[0]][1], RestAreaList[iSearchIndex[0]][2])
 
         self.printEvent(str)
         if checkDataButton == 0:    #음식점
-            pass
+            self.food()
         elif checkDataButton == 1:  #주유소
-            pass
+            self.GasStation()
         else:                       #편의시설
-            FacilityList.clear()
-            FacilityList = SelectRestAreaFacility(str)
-            # print(FacilityList)
+            self.Facility()
 
 
 
@@ -184,6 +192,7 @@ class RestArea:
         self.window = Tk()
         self.window.title = 'ReatArea'
         self.window.geometry('600x750+500+0')
+        self.window.configure(background='pink')
 
         # 우리 메인 로고
         self.RAPhoto = PhotoImage(file='resource\R.gif')
