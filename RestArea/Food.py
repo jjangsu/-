@@ -20,7 +20,7 @@ def getAllFoodData():
 
         temp = req.read().decode(('utf-8'))
         if int(req.status) == 200:
-            print("200 ok!")
+            print(i, " ok")
             putXmlToSearchListAll(temp)
         else:
             return None

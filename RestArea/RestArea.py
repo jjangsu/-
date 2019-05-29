@@ -59,6 +59,28 @@ class RestArea:
                 self.dataList.insert(i, FoodList[i][1])
 
 
+    def drawCanvase(self, GasStationList):
+        self.canvas.delete("grim")
+
+        x, y = 278, 215
+        barW = (x - 10 - 10) / 5
+        kind = ["disel", "gasoline","lpg"]
+        for i in range(len(GasStationList) - 3):
+            print(i)
+            tmp = GasStationList[i + 1].split('원')
+            price = tmp[0]
+            tmp = price.split(',')
+            print(tmp)
+            if len(tmp)>1:
+                price = int(tmp[0] + tmp[1])
+            else:
+                price = int(price)
+
+            self.canvas.create_rectangle(10 + barW * (i + 1), 10 + (1 - price / 1700) * (y - 5),
+                                         10 + (i + 2) * barW, y - 17, tag="grim")
+            self.canvas.create_text(35 + (i + 1) * barW, 5 + (y - 5) * (1 - price / 1700), text=str(price), tag="grim")
+            self.canvas.create_text(35 + (i + 1) * barW, y - 10, text=kind[i], tag="grim")
+        pass
 
     def GasStation(self):
         global checkDataButton
@@ -71,6 +93,10 @@ class RestArea:
         print(self.searchBox.get())
         GasStationList = SelectRestAreaGas(self.searchBox.get(), RestAreaName)
         print(GasStationList)
+
+        self.canvas.delete('grim')
+        if GasStationList is not None:
+            self.drawCanvase(GasStationList)
 
         if GasStationList is not None:
             self.dataInfo.insert(INSERT, "disel: " + GasStationList[1] + "\n")
@@ -148,6 +174,10 @@ class RestArea:
         self.dataList.bind('<<ListboxSelect>>', self.onclick_event)
         self.dataList.place(x=333, y=330)
         self.dataList.selection_clear(0, END)
+
+    def initCanvas(self):
+        self.canvas = Canvas(self.window, width=278, height=215, bg='white')
+        self.canvas.place(x=50, y=330)
 
 
     def initDataInfo(self):
@@ -277,7 +307,7 @@ class RestArea:
         Logo.place(x=50, y=30)
 
         self.initEventData()
-        # self.initDataPhoto(0, 0)
+        self.initCanvas()
         self.initDataList()
         self.initDataInfo()
         self.initDataCategory()
