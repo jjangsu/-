@@ -29,10 +29,10 @@ msg['To'] = recipientAddr
 def sendGmail(rv):
     global host, port
     html = ""
-    title = 'FUCK'
+    title = 'testMSG'
     senderAddr = 'min164337@gmail.com'
     recipientAddr = rv
-    msgtext = 'fuck you'
+    msgtext = 'tteexxtt'
     passwd = '88088808!a'
     #msgtext = str(input ('Do you want to include book data (y/n):'))
     msgtext = 'n'
