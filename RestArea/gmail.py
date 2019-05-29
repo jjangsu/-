@@ -26,12 +26,12 @@ msg['To'] = recipientAddr
 #HtmlPart = MIMEText(htmlFD.read(),'html', _charset = 'UTF-8' )
 #htmlFD.close()
 
-def sendGmail():
+def sendGmail(rv):
     global host, port
     html = ""
     title = 'FUCK'
     senderAddr = 'min164337@gmail.com'
-    recipientAddr = 'minf0723@naver.com'
+    recipientAddr = rv
     msgtext = 'fuck you'
     passwd = '88088808!a'
     #msgtext = str(input ('Do you want to include book data (y/n):'))

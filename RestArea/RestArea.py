@@ -65,9 +65,6 @@ class RestArea:
         else:                       #편의시설
             pass
 
-    def sendMail(self):
-        sendGmail()
-        pass
 
     def openWebMap(self, x, y):
         # 사진
@@ -121,13 +118,17 @@ class RestArea:
         else:
             self.eventList.insert(INSERT, "이벤트 없음")
 
+    def sendMail(self):
+        rv = self.mailEntry.get()
+        sendGmail(rv)
+
     def intiSendGmail(self):
         # Gmail보내는 버튼
-        self.mailPhoto = PhotoImage(file='resource\mail.gif')
-        self.mailButton = Button(self.window, image=self.mailPhoto, command=self.sendMail)
-        self.mailButton.place(x=400, y=80)
+        self.mailPhoto = PhotoImage(file='resource\_newMail.png')
+        self.mailButton = Button(self.window, image=self.mailPhoto, command=self.sendMail, background=bgColor, activebackground='red')
+        self.mailButton.place(x=400, y=100)
         self.mailEntry = Entry(self.window)
-        self.mailEntry.place(x=400, y=50)
+        self.mailEntry.place(x=375, y=70)
 
     def SearchRestAreaByName(self): #함수를 한번에 못넘기겠어서 만든 친굽니다 그 옆에 휴게소 목록 리스트 초기화하고 다시 받아서 넣어줍니다
         global RestAreaList
