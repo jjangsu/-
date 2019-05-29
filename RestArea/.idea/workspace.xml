@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77476956-77c2-4e3b-8077-b60510f70321" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Food.py" beforeDir="false" afterPath="$PROJECT_DIR$/Food.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RestArea.py" beforeDir="false" afterPath="$PROJECT_DIR$/RestArea.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/osm.html" beforeDir="false" afterPath="$PROJECT_DIR$/osm.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,12 +43,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="7228" />
+          <entry key="py" value="8074" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="7228" />
+          <entry key="Python" value="8074" />
         </counts>
       </usages-collector>
     </session>
@@ -58,33 +58,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mainloop.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RestArea.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2299">
-              <caret line="121" column="33" lean-forward="true" selection-start-line="121" selection-start-column="33" selection-end-line="121" selection-end-column="33" />
-              <folding>
-                <element signature="e#24#45#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="76">
+              <caret line="4" column="26" lean-forward="true" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/RestArea.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="139">
+              <caret line="233" column="13" selection-start-line="233" selection-start-column="13" selection-end-line="233" selection-end-column="13" />
+              <folding>
+                <element signature="e#24#45#0" expanded="true" />
+                <marker date="1559133263005" expanded="true" signature="612:614" ph="..." />
+                <marker date="1559133263005" expanded="true" signature="3429:3686" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Food.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="182">
+              <caret line="63" column="1" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
               <folding>
                 <element signature="e#23#41#0" expanded="true" />
-                <marker date="1559123296204" expanded="true" signature="832:1006" ph="..." />
-                <marker date="1559123296204" expanded="true" signature="1040:1065" ph="..." />
+                <marker date="1559123963392" expanded="true" signature="832:1006" ph="..." />
+                <marker date="1559123963392" expanded="true" signature="1040:1065" ph="..." />
               </folding>
             </state>
           </provider>
@@ -153,6 +155,9 @@
       <find>Facil</find>
       <find>print</find>
       <find>mail.</find>
+      <find>ListBox</find>
+      <find>Language</find>
+      <find>Datain</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -166,16 +171,15 @@
         <option value="$PROJECT_DIR$/Facility.py" />
         <option value="$PROJECT_DIR$/Event.py" />
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/RestArea.py" />
         <option value="$PROJECT_DIR$/gmail.py" />
         <option value="$PROJECT_DIR$/Food.py" />
+        <option value="$PROJECT_DIR$/RestArea.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="405" />
-    <option name="y" value="-27" />
-    <option name="width" value="1185" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="width" value="1178" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -224,7 +228,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Food">
+  <component name="RunManager" selected="Python.mainloop">
     <configuration name="Food" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RestArea" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -317,9 +321,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Food" />
         <item itemvalue="Python.mainloop" />
         <item itemvalue="Python.RestArea" />
+        <item itemvalue="Python.Food" />
         <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
@@ -338,16 +342,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="7" />
+    <frame x="-6" y="0" width="781" height="840" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11037674" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22446236" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32998565" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.379021" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.15700142" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33239037" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.407355" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -362,6 +366,17 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/RestArea.py</url>
+          <line>114</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://C:/Python37/Lib/tkinter/__init__.py" />
@@ -462,31 +477,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Food.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="63" column="1" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
+          <folding>
+            <element signature="e#23#41#0" expanded="true" />
+            <marker date="1559123963392" expanded="true" signature="832:1006" ph="..." />
+            <marker date="1559123963392" expanded="true" signature="1040:1065" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mainloop.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="76">
+          <caret line="4" column="26" lean-forward="true" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RestArea.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2299">
-          <caret line="121" column="33" lean-forward="true" selection-start-line="121" selection-start-column="33" selection-end-line="121" selection-end-column="33" />
+        <state relative-caret-position="139">
+          <caret line="233" column="13" selection-start-line="233" selection-start-column="13" selection-end-line="233" selection-end-column="13" />
           <folding>
             <element signature="e#24#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Food.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="e#23#41#0" expanded="true" />
-            <marker date="1559123296204" expanded="true" signature="832:1006" ph="..." />
-            <marker date="1559123296204" expanded="true" signature="1040:1065" ph="..." />
+            <marker date="1559133263005" expanded="true" signature="612:614" ph="..." />
+            <marker date="1559133263005" expanded="true" signature="3429:3686" ph="..." />
           </folding>
         </state>
       </provider>
