@@ -131,8 +131,9 @@ class RestArea:
         # print(self.searchBox.get())
         RestAreaList = SearchRestArea(self.searchBox.get())
         print(RestAreaList)
-        for i in range(len(RestAreaList)):
-            self.searchList.insert(i,RestAreaList[i][0])
+        if RestAreaList is not None:
+            for i in range(len(RestAreaList)):
+               self.searchList.insert(i,RestAreaList[i][0])
 
 
     def ClearDataBox(self):

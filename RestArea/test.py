@@ -4,12 +4,12 @@
 import urllib
 import http.client
 from xml.etree import ElementTree
-routeNoToName = {'경부선':'0010', '남해선':'0100', '광주대구선':'0120', '무안광주선':'0121 ', '고창담양선':'0140',
-                 '서해안선': '0150  ',  '대구포항선':'0200',
+routeNoToName = {'경부선':'0010', '남해선':'0100', '광주대구선':'0120', '무안광주선':'0121',
+                 '서해안선': '0150',  '대구포항선':'0200',
                  '익산장수선': '0201', '호남선':'0251', '천안논산선':'0252', '논산천안선':'0252', '순천완주선':'0270', '청주영덕선':'0300',
                  '당진대전선': '0301', '중부선':'0352', '평택제천선':'0400', '중부내륙선':'0450',
-                 '영동선':'0500', '중앙선' : '0550', '대구부산선':'0552', '서울양양선' : '0600' , '동해선':'0650',
-                 '서울외관순환선':'1000', '남해2지선':'1040', '서천공주선':'1510', '호남지선':'2510', '중부내륙지선':'4510'
+                 '영동선':'0500', '중앙선' : '0550', '대구부산선':'0552', '서울양양선' : '0600', '동해선':'0650',
+                 '서울외곽순환선': '1000', '남해2지선':'1040', '서천공주선':'1510', '호남지선':'2510', '중부내륙지선':'4510'
                  }
 
 DataList = []
@@ -49,10 +49,12 @@ def putXmlToSearchList(strXml): # str을 그 원하는거만 찾아주는 친구
         tmpList = []
         name = item.find("unitName")
         tmpList.append(name.text)
-        name = item.find("xValue")
-        tmpList.append(name.text)
-        name = item.find("yValue")
-        tmpList.append(name.text)
+        if item.find("xValue") is not None:
+            name = item.find("xValue")
+            tmpList.append(name.text)
+        if item.find('yValue') is not None:
+            name = item.find("yValue")
+            tmpList.append(name.text)
 
         RestAreaList.append(tmpList)
     return RestAreaList #여기도 이렇게 리턴해줍니더
