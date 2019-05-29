@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="066b97db-5dae-483f-aaf4-e5d5589645f0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/RestArea/RestArea.py" beforeDir="false" afterPath="$PROJECT_DIR$/RestArea/RestArea.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RestArea/gasStation.py" beforeDir="false" afterPath="$PROJECT_DIR$/RestArea/gasStation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RestArea/osm.html" beforeDir="false" afterPath="$PROJECT_DIR$/RestArea/osm.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -10,6 +11,52 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/RestArea/Facility.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="221">
+                    <caret line="17" column="41" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="41" />
+                    <folding>
+                      <element signature="e#23#36#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/RestArea/test.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="247">
+                    <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+                    <folding>
+                      <element signature="e#194#207#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/RestArea/gasStation.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="399">
+                    <caret line="81" column="32" lean-forward="true" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
+                    <folding>
+                      <element signature="e#0#13#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -25,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RestArea/RestArea.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="113" column="39" lean-forward="true" selection-start-line="113" selection-start-column="39" selection-end-line="113" selection-end-column="39" />
+            <state relative-caret-position="124">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
               <folding>
                 <element signature="e#24#45#0" expanded="true" />
               </folding>
@@ -37,14 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/RestArea/gasStation.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://C:/Python37/Lib/tkinter/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="143">
+              <caret line="1704" selection-start-line="1704" selection-end-line="1704" />
             </state>
           </provider>
         </entry>
@@ -52,7 +96,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://C:/Python37/Lib/site-packages/folium/folium.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
+            <state relative-caret-position="4313">
               <caret line="238" selection-start-line="238" selection-end-line="238" />
             </state>
           </provider>
@@ -61,7 +105,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RestArea/gmail.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
+            <state>
               <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
             </state>
           </provider>
@@ -83,14 +127,12 @@
       <find>check</find>
       <find>slashFrom</find>
       <find>LoadXMLFromFile</find>
-      <find>putXmlToSearchList</find>
       <find>sendGmail</find>
       <find>findCon</find>
       <find>ConName</find>
       <find>itemElements</find>
       <find>conRoot</find>
       <find>iSearchIndex</find>
-      <find>dataInfo</find>
       <find>temp</find>
       <find>conSubRoot</find>
       <find>sear</find>
@@ -99,11 +141,17 @@
       <find>pho</find>
       <find>ImageTk</find>
       <find>initDataPhoto</find>
-      <find>SearchRestArea</find>
-      <find>routeNoToName</find>
       <find>intiSendGmail</find>
-      <find>name</find>
       <find>Facility</find>
+      <find>tmpName</find>
+      <find>putXmlToSearchList</find>
+      <find>dataInfo</find>
+      <find>GasStation</find>
+      <find>name</find>
+      <find>routeNoToName</find>
+      <find>SearchRestArea</find>
+      <find>routeURLBuilder</find>
+      <find>SelectRestAreaGas</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -126,14 +174,14 @@
         <option value="$PROJECT_DIR$/RestArea/Facility.py" />
         <option value="$PROJECT_DIR$/RestArea/Event.py" />
         <option value="$PROJECT_DIR$/RestArea/test.py" />
-        <option value="$PROJECT_DIR$/RestArea/RestArea.py" />
         <option value="$PROJECT_DIR$/RestArea/gasStation.py" />
+        <option value="$PROJECT_DIR$/RestArea/RestArea.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="width" value="1073" />
+    <option name="width" value="1064" />
     <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
@@ -141,6 +189,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -162,7 +211,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -324,14 +372,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-6" y="0" width="820" height="830" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09649703" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22733077" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.39148936" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3472023" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2822695" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -406,34 +455,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/t-t-t/ttt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RestArea/Event.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="893">
           <caret line="48" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RestArea/gmail.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python37/Lib/tkinter/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="1704" selection-start-line="1704" selection-end-line="1704" />
         </state>
       </provider>
     </entry>
@@ -444,16 +469,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RestArea/Facility.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#23#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RestArea/mainloop.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -461,39 +476,73 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/t-t-t/ttt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://C:/Python37/Lib/site-packages/folium/folium.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
+        <state relative-caret-position="4313">
           <caret line="238" selection-start-line="238" selection-end-line="238" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RestArea/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="247">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
           <folding>
             <element signature="e#194#207#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RestArea/RestArea.py">
+    <entry file="file://$PROJECT_DIR$/RestArea/gmail.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="113" column="39" lean-forward="true" selection-start-line="113" selection-start-column="39" selection-end-line="113" selection-end-column="39" />
+        <state>
+          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python37/Lib/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="1704" selection-start-line="1704" selection-end-line="1704" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RestArea/Facility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="41" />
           <folding>
-            <element signature="e#24#45#0" expanded="true" />
+            <element signature="e#23#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RestArea/gasStation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+        <state relative-caret-position="399">
+          <caret line="81" column="32" lean-forward="true" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RestArea/RestArea.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+          <folding>
+            <element signature="e#24#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
