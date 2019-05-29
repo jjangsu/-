@@ -152,7 +152,9 @@ class RestArea:
         RestAreaName = str
         # print(str)
 
-        self.openWebMap(RestAreaList[iSearchIndex[0]][1], RestAreaList[iSearchIndex[0]][2])
+        print(RestAreaList)
+        if len(RestAreaList[iSearchIndex[0]]) > 1:
+            self.openWebMap(RestAreaList[iSearchIndex[0]][1], RestAreaList[iSearchIndex[0]][2])
 
         self.printEvent(str)
         if checkDataButton == 0:    #음식점
