@@ -52,7 +52,7 @@ def putXmlToSearchList(strXml): # str을 그 원하는거만 찾아주는 친구
     print(strXml)
 
     itemElements = tree.getiterator("list")  # return list type
-    # print(itemElements)
+    print(itemElements)
     for item in itemElements:
         tmpList = []
         name = item.find("brand")
