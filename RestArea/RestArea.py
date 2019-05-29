@@ -193,10 +193,12 @@ class RestArea:
         self.window = Tk()
         self.window.title = 'ReatArea'
         self.window.geometry('600x750+500+0')
-        self.window.configure(background='pink')
+        self.window.configure(background='honeydew2')
+        # lemon chiffon  RosyBrown1 개이쁜 핑크임   thistle 개이쁜 보라색
+        # 낫밷 powder blue
 
         # 우리 메인 로고
-        self.RAPhoto = PhotoImage(file='resource\R.gif')
+        self.RAPhoto = PhotoImage(file='resource\logolego.PNG')
         Logo = Label(self.window, image=self.RAPhoto)
         Logo.place(x=50, y=30)
 
