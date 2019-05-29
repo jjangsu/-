@@ -17,7 +17,6 @@ def routeURLBuilder(name):  # URL 만들때는 모두 이런 형식으로 만들
     # exopenapi/business/curStateStation?serviceKey=jyWeFegnALTcwvSFHvgeaQYIhtirRuGHTyB5YYxZNpQmWoQGf7EQc5%2F9Jsb6vw1kxdc0QhsfiT78%2BEyDQKIEyQ%3D%3D&type=xml&oilCompany=AD&numOfRows=10&pageNo=1
     # /exopenapi/business/curStateStation?serviceKey=jyWeFegnALTcwvSFHvgeaQYIhtirRuGHTyB5YYxZNpQmWoQGf7EQc5%2F9Jsb6vw1kxdc0QhsfiT78%2BEyDQKIEyQ%3D%3D&type=xml&oilCompany=AD&numOfRows=10&pageNo=1&routeCode=0100
     str = '/exopenapi/business/curStateStation?serviceKey=jyWeFegnALTcwvSFHvgeaQYIhtirRuGHTyB5YYxZNpQmWoQGf7EQc5%2F9Jsb6vw1kxdc0QhsfiT78%2BEyDQKIEyQ%3D%3D&type=xml'
-    # str += '%EA%B8%B0%ED%9D%A5'
     str += '&oilCompany=AD&numOfRows=10&pageNo=1&routeCode='
     hangul_utf8 = urllib.parse.quote(name)
     str += hangul_utf8
@@ -29,15 +28,12 @@ def SelectRestAreaGas(name, serviceName):   # 파싱하는 친구에유
     conn = http.client.HTTPConnection("data.ex.co.kr")
     serviceAreaName = serviceName
     # hangul_utf8 = urllib.parse.quote("한국산업기술대학교")
-    tmpName = name
-    # tmpName = routeNoToName.get(name)
+    # tmpName = name
+    tmpName = routeNoToName.get(name)
     uri = routeURLBuilder(tmpName)
     conn.request("GET", uri)
     req = conn.getresponse()
-    #print(req.status, req.reason)
-    #print(req.read().decode('utf-8'))
     print(req.status, req.reason)
-    # print(req.read().decode('utf-8'))
     temp = req.read().decode(('utf-8'))
     print("-------------")
     print(temp)
@@ -80,6 +76,8 @@ def putXmlToSearchList(strXml): # str을 그 원하는거만 찾아주는 친구
             if name.text == 'Y':
                 name = item.find("lpgPrice")
                 tmpList.append(name.text)
+            else:
+                tmpList.append("-")
 
             name = item.find("telNo")
             tmpList.append(name.text)
@@ -87,10 +85,12 @@ def putXmlToSearchList(strXml): # str을 그 원하는거만 찾아주는 친구
             name = item.find("direction")
             tmpList.append(name.text)
 
+            return tmpList
+
 
         returnList.append(tmpList)
-    print("반환 리스트 -  ", returnList)
-    return returnList #여기도 이렇게 리턴해줍니더
+    # print("반환 리스트 -  ", returnList)
+    # return returnList #여기도 이렇게 리턴해줍니더
 
 
-SelectRestAreaGas("경부선", "서울")
+# SelectRestAreaGas("경부선", "서울")

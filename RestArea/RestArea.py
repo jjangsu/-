@@ -37,10 +37,13 @@ class RestArea:
         print(self.searchBox.get())
         GasStationList = SelectRestAreaGas(self.searchBox.get(), RestAreaName)
         print(GasStationList)
-        for item in GasStationList:
-            self.dataInfo.insert(INSERT, "disel: " + item[1] + "\n")
-            self.dataInfo.insert(INSERT, "gasoline: " + item[2] + "\n")
-            # self.dataInfo.insert(INSERT, "lpg: " + item[3] + "\n")
+
+        if GasStationList is not None:
+            self.dataInfo.insert(INSERT, "disel: " + GasStationList[1] + "\n")
+            self.dataInfo.insert(INSERT, "gasoline: " + GasStationList[2] + "\n")
+            self.dataInfo.insert(INSERT, "lpg: " + GasStationList[3] + "\n")
+        else:
+            self.dataInfo.insert(INSERT, "주유소 없음")
 
 
     def Facility(self):
@@ -180,7 +183,8 @@ class RestArea:
         if checkDataButton == 0:    #음식점
             self.food()
         elif checkDataButton == 1:  #주유소
-            self.GasStation(RestAreaName)
+            self.GasStation()
+            # self.GasStation(RestAreaName)
         else:                       #편의시설
             self.Facility()
         # tmp = findCon(str)
