@@ -185,7 +185,12 @@ class RestArea:
         self.searchBox = Entry(self.window, width=30)
         self.searchBox.place(x=50, y=220)
 
+<<<<<<< HEAD
         Button(self.window, text='search', command=self.SearchRestAreaByName, background=buttonColor).place(x=265, y=220)
+=======
+        Button(self.window, text='search', command=self.SearchRestAreaByName).place(x=265, y=220)
+
+>>>>>>> ee9e4ca6a1b94e4fc2063bbe329e900c53df025e
         # 검색 목록
         #self.searchList = Text(self.window, width=30, height=5)
         self.searchList = Listbox(self.window, width=30, height=5)
