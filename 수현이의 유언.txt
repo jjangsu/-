@@ -1,0 +1,12 @@
+민주야 내가 스언어 커밋했는데 충돌나서 내꺼에 있는 사목 백업해두고 다시 클론 받아서 다시 바꿔치기 해놨는데
+혹시 모르니까 확인 함 해줘.. 
+나이제 회으ㅏ 가야하는데
+너가한거날아간거 아니겠지ㅠㅠㅠㅠㅠ
+제바류ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ
+
+
+    conn = http.client.HTTPConnection("data.ex.co.kr")
+    uri = routeURLBuilder(name)
+    conn.request("GET", uri, None)
+    req = conn.getresponse()
+    print(req.status, req.reason)
