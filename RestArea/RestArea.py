@@ -3,12 +3,15 @@ from tkinter import *
 from xml.dom.minidom import parse, parseString
 from test import SearchRestArea
 from Facility import SelectRestAreaFacility, putXmlToSearchList
+from gasStation import SelectRestAreaGas
 from gmail import sendGmail
 from FacillityTest import findCon
 from Event import findEventByName
 
+
 RestAreaList = []
 FacilityList = []
+GasStationList = []
 EventList = []
 checkDataButton = 0
 AllDoc = None
@@ -28,6 +31,17 @@ class RestArea:
         global checkDataButton
         checkDataButton = 1
         self.ClearDataBox()
+
+        print("------------")
+        print(RestAreaName)
+        print(self.searchBox.get())
+        GasStationList = SelectRestAreaGas(self.searchBox.get(), RestAreaName)
+        print(GasStationList)
+        for item in GasStationList:
+            self.dataInfo.insert(INSERT, "disel: " + item[1] + "\n")
+            self.dataInfo.insert(INSERT, "gasoline: " + item[2] + "\n")
+            # self.dataInfo.insert(INSERT, "lpg: " + item[3] + "\n")
+
 
     def Facility(self):
         global checkDataButton
@@ -156,7 +170,7 @@ class RestArea:
         str = RestAreaList[iSearchIndex[0]][0]
         str = str[0:2]
         RestAreaName = str
-        print(str)
+        print("휴게소 이름 앞 2: " + str)
 
         print(RestAreaList)
         if len(RestAreaList[iSearchIndex[0]]) > 1:
@@ -166,7 +180,7 @@ class RestArea:
         if checkDataButton == 0:    #음식점
             self.food()
         elif checkDataButton == 1:  #주유소
-            self.GasStation()
+            self.GasStation(RestAreaName)
         else:                       #편의시설
             self.Facility()
         # tmp = findCon(str)
