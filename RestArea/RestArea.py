@@ -128,7 +128,7 @@ class RestArea:
         self.mailButton = Button(self.window, image=self.mailPhoto, command=self.sendMail, background=bgColor, activebackground='red')
         self.mailButton.place(x=400, y=100)
         self.mailEntry = Entry(self.window)
-        self.mailEntry.place(x=375, y=70)
+        self.mailEntry.place(x=375, y=170)
 
     def SearchRestAreaByName(self): #함수를 한번에 못넘기겠어서 만든 친굽니다 그 옆에 휴게소 목록 리스트 초기화하고 다시 받아서 넣어줍니다
         global RestAreaList
@@ -156,7 +156,7 @@ class RestArea:
         str = RestAreaList[iSearchIndex[0]][0]
         str = str[0:2]
         RestAreaName = str
-        # print(str)
+        print(str)
 
         print(RestAreaList)
         if len(RestAreaList[iSearchIndex[0]]) > 1:
@@ -169,10 +169,6 @@ class RestArea:
             self.GasStation()
         else:                       #편의시설
             self.Facility()
-
-
-
-
         # tmp = findCon(str)
         # print("------")
         # print(tmp.find("psName").text)
