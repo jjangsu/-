@@ -61,11 +61,20 @@ class RestArea:
         sendGmail()
         pass
 
-    def initDataPhoto(self):
+    def openWebMap(self, x, y):
         # 사진
-        self.dataPhoto = PhotoImage(file='resource\_bg.png')
-        dataImage = Label(self.window, image=self.dataPhoto, width=280, height=220)
-        dataImage.place(x=50, y=330)
+        import folium
+        import webbrowser
+        print(x)
+        print(y)
+        map_osm = folium.Map(location=[float(y), float(x)], zoom_start=30)
+        folium.Marker([float(y), float(x)]).add_to(map_osm)
+
+        map_osm.save('osm.html')
+
+        webbrowser.open('osm.html')
+
+
 
     def initDataList(self):
         # 목록
@@ -111,30 +120,36 @@ class RestArea:
 
     def SearchRestAreaByName(self): #함수를 한번에 못넘기겠어서 만든 친굽니다 그 옆에 휴게소 목록 리스트 초기화하고 다시 받아서 넣어줍니다
         global RestAreaList
-        RestAreaList.clear()
+        if RestAreaList is not None:
+            RestAreaList.clear()
         # print(self.searchBox.get())
         RestAreaList = SearchRestArea(self.searchBox.get())
+        print(RestAreaList)
         for i in range(len(RestAreaList)):
-            self.searchList.insert(i,RestAreaList[i])
+            self.searchList.insert(i,RestAreaList[i][0])
 
     def SelectRestArea(self):
         global checkDataButton
         global RestAreaList
         global FacilityList
-        FacilityList.clear()
+
         self.dataList.delete(0, self.dataList.size())
         self.dataInfo.delete('1.0', END)
 
         iSearchIndex = self.searchList.curselection()
-        str = RestAreaList[iSearchIndex[0]]
+        str = RestAreaList[iSearchIndex[0]][0]
         str = str[0:2]
         # print(str)
+
+        self.openWebMap(RestAreaList[iSearchIndex[0]][1], RestAreaList[iSearchIndex[0]][2])
+
         self.printEvent(str)
         if checkDataButton == 0:    #음식점
             pass
         elif checkDataButton == 1:  #주유소
             pass
         else:                       #편의시설
+            FacilityList.clear()
             FacilityList = SelectRestAreaFacility(str)
             # print(FacilityList)
 
@@ -177,7 +192,7 @@ class RestArea:
 
         #self.LoadXMLFromFile()
         self.initEventData()
-        self.initDataPhoto()
+        # self.initDataPhoto(0, 0)
         self.initDataList()
         self.initDataInfo()
         self.initDataCategory()
