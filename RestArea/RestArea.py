@@ -23,15 +23,34 @@ RestAreaName = ''
 isFirstTimeGetFood = True
 buttonColor = 'lavender'
 bgColor = 'thistle'
+checkColor = 'pink'
 
 
 class RestArea:
+
+    def changSelectButtonColor(self):
+        global checkDataButton
+        if checkDataButton == 0:    #음식
+            self.categoryFood.configure(background=checkColor)
+            self.categoryGas.configure(background=buttonColor)
+            self.categoryFacility.configure(background=buttonColor)
+        elif checkDataButton == 1:  #주유소
+            self.categoryFood.configure(background=buttonColor)
+            self.categoryGas.configure(background=checkColor)
+            self.categoryFacility.configure(background=buttonColor)
+            pass
+        else:                       #휴게소
+            self.categoryFood.configure(background=buttonColor)
+            self.categoryGas.configure(background=buttonColor)
+            self.categoryFacility.configure(background=checkColor)
+            pass
 
     def food(self):
         global checkDataButton
         global FoodList
         checkDataButton = 0
         self.ClearDataBox()
+        self.changSelectButtonColor()
 
         FoodList = findFoodtByName(RestAreaName)
 
@@ -45,6 +64,7 @@ class RestArea:
         global checkDataButton
         checkDataButton = 1
         self.ClearDataBox()
+        self.changSelectButtonColor()
 
         print("------------")
         print(RestAreaName)
@@ -66,6 +86,7 @@ class RestArea:
         global RestAreaName
         checkDataButton = 2
         self.ClearDataBox()
+        self.changSelectButtonColor()
 
         FacilityList.clear()
         FacilityList = SelectRestAreaFacility(RestAreaName)
@@ -137,14 +158,14 @@ class RestArea:
     def initDataCategory(self):
         global buttonColor
         # 음식점
-        categoryFood = Button(self.window, text="음식점", width=8, command=self.food, background=buttonColor)
-        categoryFood.place(x=50, y=300)
+        self.categoryFood = Button(self.window, text="음식점", width=8, command=self.food, background=buttonColor)
+        self.categoryFood.place(x=50, y=300)
         # 주유소
-        categoryGas = Button(self.window, text='주유소', width=8, command=self.GasStation, background=buttonColor)
-        categoryGas.place(x=110, y=300)
+        self.categoryGas = Button(self.window, text='주유소', width=8, command=self.GasStation, background=buttonColor)
+        self.categoryGas.place(x=110, y=300)
         # 편의시설
-        categoryFacility = Button(self.window, text='편의시설', width=8, command=self.Facility, background=buttonColor)
-        categoryFacility.place(x=170, y=300)
+        self.categoryFacility = Button(self.window, text='편의시설', width=8, command=self.Facility, background=buttonColor)
+        self.categoryFacility.place(x=170, y=300)
 
     def initEventData(self):
         self.eventList = Text(self.window, width=75, height=5)
