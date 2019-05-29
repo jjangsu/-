@@ -14,6 +14,8 @@ checkDataButton = 0
 AllDoc = None
 xmlFD = -1
 RestAreaName = ''
+buttonColor = 'lavender'
+bgColor = 'thistle'
 
 class RestArea:
 
@@ -93,14 +95,15 @@ class RestArea:
         self.dataInfo.place(x=50, y=550)
 
     def initDataCategory(self):
+        global buttonColor
         # 음식점
-        categoryFood = Button(self.window, text="음식점", width=8, command=self.food)
+        categoryFood = Button(self.window, text="음식점", width=8, command=self.food, background=buttonColor)
         categoryFood.place(x=50, y=300)
         # 주유소
-        categoryGas = Button(self.window, text='주유소', width=8, command=self.GasStation)
+        categoryGas = Button(self.window, text='주유소', width=8, command=self.GasStation, background=buttonColor)
         categoryGas.place(x=110, y=300)
         # 편의시설
-        categoryFacility = Button(self.window, text='편의시설', width=8, command=self.Facility)
+        categoryFacility = Button(self.window, text='편의시설', width=8, command=self.Facility, background=buttonColor)
         categoryFacility.place(x=170, y=300)
 
     def initEventData(self):
@@ -122,7 +125,9 @@ class RestArea:
         # Gmail보내는 버튼
         self.mailPhoto = PhotoImage(file='resource\mail.gif')
         self.mailButton = Button(self.window, image=self.mailPhoto, command=self.sendMail)
-        self.mailButton.place(x=400, y=50)
+        self.mailButton.place(x=400, y=80)
+        self.mailEntry = Entry(self.window)
+        self.mailEntry.place(x=400, y=50)
 
     def SearchRestAreaByName(self): #함수를 한번에 못넘기겠어서 만든 친굽니다 그 옆에 휴게소 목록 리스트 초기화하고 다시 받아서 넣어줍니다
         global RestAreaList
@@ -180,12 +185,12 @@ class RestArea:
         self.searchBox = Entry(self.window, width=30)
         self.searchBox.place(x=50, y=220)
 
-        Button(self.window, text='search', command=self.SearchRestAreaByName).place(x=265, y=220)
+        Button(self.window, text='search', command=self.SearchRestAreaByName, background=buttonColor).place(x=265, y=220)
         # 검색 목록
         #self.searchList = Text(self.window, width=30, height=5)
         self.searchList = Listbox(self.window, width=30, height=5)
         self.searchList.place(x=320, y=220)
-        Button(self.window, text='select', command=self.SelectRestArea).place(x=535, y=220)
+        Button(self.window, text='select', command=self.SelectRestArea, background=buttonColor).place(x=535, y=220)
 
 
     def __init__(self):
@@ -195,13 +200,16 @@ class RestArea:
         self.window = Tk()
         self.window.title = 'ReatArea'
         self.window.geometry('600x750+500+0')
-        self.window.configure(background='honeydew2')
+        self.window.configure(background=bgColor)
         # lemon chiffon  RosyBrown1 개이쁜 핑크임   thistle 개이쁜 보라색
         # 낫밷 powder blue
 
         # 우리 메인 로고
-        self.RAPhoto = PhotoImage(file='resource\logolego.PNG')
-        Logo = Label(self.window, image=self.RAPhoto)
+
+
+        # Image.open
+        self.RAPhoto = PhotoImage(file='resource\logolegoApng.png')
+        Logo = Label(self.window, image=self.RAPhoto, background=bgColor)
         Logo.place(x=50, y=30)
 
         #self.LoadXMLFromFile()
