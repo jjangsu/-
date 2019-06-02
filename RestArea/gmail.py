@@ -26,7 +26,7 @@ msg['To'] = recipientAddr
 #HtmlPart = MIMEText(htmlFD.read(),'html', _charset = 'UTF-8' )
 #htmlFD.close()
 
-def sendGmail(rv):
+def sendGmail(rv, lst):
     global host, port
     html = ""
     title = 'testMSG'
@@ -35,9 +35,9 @@ def sendGmail(rv):
     msgtext = 'tteexxtt'
     passwd = '88088808!a'
     #msgtext = str(input ('Do you want to include book data (y/n):'))
-    msgtext = 'n'
+    msgtext = 'y'
     if msgtext == 'y' :
-        keyword = str(input ('input keyword to search:'))
+        keyword = str(lst)
         #html = MakeHtmlDoc(SearchBookTitle(keyword))
         html = 'hello'
 
@@ -58,7 +58,7 @@ def sendGmail(rv):
     #bookPart = MIMEText(html, 'html', _charset = 'UTF-8')
 
     # 메세지에 생성한 MIME 문서를 첨부합니다.
-    msg.attach(msgPart)
+    #msg.attach(lst)
     #msg.attach(bookPart)
 
     print ("connect smtp server ... ")

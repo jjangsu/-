@@ -16,6 +16,7 @@ FacilityList = []
 FoodList = []
 GasStationList = []
 EventList = []
+MailList = []
 checkDataButton = 0
 AllDoc = None
 xmlFD = -1
@@ -27,7 +28,6 @@ checkColor = 'pink'
 
 
 class RestArea:
-
     def changSelectButtonColor(self):
         global checkDataButton
         if checkDataButton == 0:    #음식
@@ -48,29 +48,60 @@ class RestArea:
     def food(self):
         global checkDataButton
         global FoodList
+        global MailList
         checkDataButton = 0
         self.ClearDataBox()
         self.changSelectButtonColor()
+
+        self.canvas.delete('grim')
 
         FoodList = findFoodtByName(RestAreaName)
 
         for i in range(len(FoodList)):
             if FoodList[i] is not '':
                 self.dataList.insert(i, FoodList[i][1])
+        MailList.append(FoodList)
 
 
+    def drawCanvase(self, GasStationList):
+        self.canvas.delete("grim")
+
+        x, y = 278, 215
+        barW = (x - 10 - 10) / 5
+        kind = ["disel", "gasoline","lpg"]
+        for i in range(len(GasStationList) - 3):
+            print(i)
+            tmp = GasStationList[i + 1].split('원')
+            price = tmp[0]
+            tmp = price.split(',')
+            print(tmp)
+            if len(tmp)>1:
+                price = int(tmp[0] + tmp[1])
+            else:
+                price = int(price)
+
+            self.canvas.create_rectangle(10 + barW * (i + 1), 10 + (1 - price / 1700) * (y - 5),
+                                         10 + (i + 2) * barW, y - 17, tag="grim")
+            self.canvas.create_text(35 + (i + 1) * barW, 5 + (y - 5) * (1 - price / 1700), text=str(price), tag="grim")
+            self.canvas.create_text(35 + (i + 1) * barW, y - 10, text=kind[i], tag="grim")
+        pass
 
     def GasStation(self):
         global checkDataButton
+        global MailList
         checkDataButton = 1
         self.ClearDataBox()
         self.changSelectButtonColor()
 
-        print("------------")
-        print(RestAreaName)
-        print(self.searchBox.get())
+        # print("------------")
+        # print(RestAreaName)
+        # print(self.searchBox.get())
         GasStationList = SelectRestAreaGas(self.searchBox.get(), RestAreaName)
-        print(GasStationList)
+        # print(GasStationList)
+
+        self.canvas.delete('grim')
+        if GasStationList is not None:
+            self.drawCanvase(GasStationList)
 
         if GasStationList is not None:
             self.dataInfo.insert(INSERT, "disel: " + GasStationList[1] + "\n")
@@ -78,15 +109,19 @@ class RestArea:
             self.dataInfo.insert(INSERT, "lpg: " + GasStationList[3] + "\n")
         else:
             self.dataInfo.insert(INSERT, "주유소 없음")
+        MailList.append(GasStationList)
 
 
     def Facility(self):
         global checkDataButton
         global FacilityList
         global RestAreaName
+        global MailList
         checkDataButton = 2
         self.ClearDataBox()
         self.changSelectButtonColor()
+
+        self.canvas.delete('grim')
 
         FacilityList.clear()
         FacilityList = SelectRestAreaFacility(RestAreaName)
@@ -107,6 +142,7 @@ class RestArea:
             if convenienceList[i] is not '':
                 # if convenienceList[i] not in self.dataList:
                 self.dataList.insert(i, convenienceList[i])
+        MailList.append(convenienceList)
 
     def showData(self): #이제 여기서 일을 쫌 해야겠죠
         global checkDataButton
@@ -149,6 +185,10 @@ class RestArea:
         self.dataList.place(x=333, y=330)
         self.dataList.selection_clear(0, END)
 
+    def initCanvas(self):
+        self.canvas = Canvas(self.window, width=278, height=215, bg='white')
+        self.canvas.place(x=50, y=330)
+
 
     def initDataInfo(self):
         # 정보
@@ -173,18 +213,21 @@ class RestArea:
 
     def printEvent(self, name):
         global EventList
+        global MailList
         if EventList is not None:
             EventList.clear()
         EventList = findEventByName(name)
-        self.eventList.delete('1.0',END)
+        self.eventList.delete('1.0', END)
         if EventList is not None:
             self.eventList.insert(INSERT, EventList)
+            MailList.append(EventList)
         else:
             self.eventList.insert(INSERT, "이벤트 없음")
 
     def sendMail(self):
+        global MailList
         rv = self.mailEntry.get()
-        sendGmail(rv)
+        sendGmail(rv, MailList)
 
     def intiSendGmail(self):
         # Gmail보내는 버튼
@@ -216,6 +259,8 @@ class RestArea:
         global FacilityList
         global RestAreaName
         global isFirstTimeGetFood
+        global MailList
+        MailList.clear()
 
         iSearchIndex = self.searchList.curselection()
         str = RestAreaList[iSearchIndex[0]][0]
@@ -277,7 +322,7 @@ class RestArea:
         Logo.place(x=50, y=30)
 
         self.initEventData()
-        # self.initDataPhoto(0, 0)
+        self.initCanvas()
         self.initDataList()
         self.initDataInfo()
         self.initDataCategory()
