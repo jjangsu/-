@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 from http.client import HTTPSConnection
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
-
+sendDataList = []
 
 #global value
 host = "smtp.gmail.com" # Gmail STMP 서버 주소.
@@ -36,10 +36,20 @@ def sendGmail(rv, lst):
     passwd = '88088808!a'
     #msgtext = str(input ('Do you want to include book data (y/n):'))
     msgtext = 'y'
+
+    sendDataList.append("ㅠㅜㅜㅠ")
+    sendDataList.append("꺼럴꺼러ㅓㄹㄹ")
+
     if msgtext == 'y' :
         keyword = str(lst)
         #html = MakeHtmlDoc(SearchBookTitle(keyword))
         html = 'hello'
+        for s in range(len(sendDataList)):
+            html += sendDataList[s]
+            html += "\nn"
+            # 메일 보내면 시부레것 엔터가 안되네 
+        print(html)
+
 
     import mysmtplib
     # MIMEMultipart의 MIME을 생성합니다.
@@ -54,12 +64,12 @@ def sendGmail(rv, lst):
     msg['From'] = senderAddr
     msg['To'] = recipientAddr
 
-    msgPart = MIMEText(msgtext, 'plain')
-    #bookPart = MIMEText(html, 'html', _charset = 'UTF-8')
+    #msgPart = MIMEText(msgtext, 'plain')
+    sendData = MIMEText(html, 'html', _charset = 'UTF-8')
 
     # 메세지에 생성한 MIME 문서를 첨부합니다.
     #msg.attach(lst)
-    #msg.attach(bookPart)
+    msg.attach(sendData)
 
     print ("connect smtp server ... ")
     s = mysmtplib.MySMTP(host,port)
@@ -68,7 +78,7 @@ def sendGmail(rv, lst):
     s.starttls()
     s.ehlo()
     s.login(senderAddr, passwd)    # 로긴을 합니다.
-    s.sendmail(senderAddr , [recipientAddr], msg.as_string())
+    s.sendmail(senderAddr, [recipientAddr], msg.as_string())
     s.close()
 
     print ("Mail sending complete!!!")
