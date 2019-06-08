@@ -37,16 +37,18 @@ def sendGmail(rv, lst):
     #msgtext = str(input ('Do you want to include book data (y/n):'))
     msgtext = 'y'
 
-    sendDataList.append("ㅠㅜㅜㅠ")
-    sendDataList.append("꺼럴꺼러ㅓㄹㄹ")
+    # sendDataList.append("ㅠㅜㅜㅠ")
+    # sendDataList.append("꺼럴꺼러ㅓㄹㄹ")
 
     if msgtext == 'y' :
         keyword = str(lst)
         #html = MakeHtmlDoc(SearchBookTitle(keyword))
-        html = 'hello'
-        for s in range(len(sendDataList)):
-            html += sendDataList[s]
-            html += "\nn"
+        # html = 'hello'
+        for s in sendDataList:
+            for item in s:
+                html = html + item + " : "
+                # html += "\n"
+            html += " / "
             # 메일 보내면 시부레것 엔터가 안되네 
         print(html)
 

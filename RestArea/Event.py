@@ -1,6 +1,7 @@
 # ㅡ*ㅡ coding: utf8 -*-
 import http.client
 from xml.etree import ElementTree
+import gmail
 
 def URLBuilder(num):
     strr = '/exopenapi/restinfo/restEventList?serviceKey=jyWeFegnALTcwvSFHvgeaQYIhtirRuGHTyB5YYxZNpQmWoQGf7EQc5%2F9Jsb6vw1kxdc0QhsfiT78%2BEyDQKIEyQ%3D%3D&pageNo='
@@ -44,14 +45,21 @@ def putXmlToSearchList(strXml, name): # str을 그 원하는거만 찾아주는 
     itemElements = tree.getiterator("list")  # return list type
     #print(itemElements)
     for item in itemElements:
+        tmp = []
         if item.find("stdRestNm") != None:
             temp = item.find("stdRestNm").text
+            tmp.append(item.find("stdRestNm").text)
             if name in temp:
                 event = item.find("eventDetail")
                 returnList.append(event.text)
+                tmp.append(event.text)
+            else:
+                tmp.append("없음")
+        gmail.sendDataList.append(tmp)
     #if len(returnList) != 0:
         # print('*******************')
         #print(returnList)
+    print(gmail.sendDataList)
     return returnList #여기도 이렇게 리턴해줍니더
 
 
