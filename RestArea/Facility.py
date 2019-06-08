@@ -3,6 +3,7 @@ import urllib
 import http.client
 from xml.etree import ElementTree
 from xml.dom.minidom import parseString
+import gmail
 
 routeNoToName = {'경부선':'0010', '남해선':'0100', '88올림픽선':'0120', '무안광주선':'0121 ', '고창담양선':'0140',
                  '서해안선': '0150  ', '평택시흥선':'0153  ', '울산선':'0160', '평택화성선':'0170', '대구포항선':'0200',
@@ -65,6 +66,7 @@ def putXmlToSearchList(strXml): # str을 그 원하는거만 찾아주는 친구
         tmpList.append(name.text)
         name = item.find("batchMenu")
         tmpList.append(name.text)
+        gmail.sendDataList.append("야호")
 
         returnList.append(tmpList)
     # print(returnList)
