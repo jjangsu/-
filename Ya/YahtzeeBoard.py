@@ -3,7 +3,7 @@ from tkinter import font
 import tkinter.messagebox
 from player import *
 from dice import *
-#from configuration import *
+from configuration import *
 
 class YahtzeeBoard:
     UPPERTOTAL = 6
@@ -14,21 +14,24 @@ class YahtzeeBoard:
     diceButtons = []
     fields = []
 
-    players = []
-    numPalyers = 0
-    player = 0
-    round = 0
-    roll = 0
+
 
     def __init__(self):
         self.InitPayers()
+        self.bottomLabel = None
+        self.players = []
+        self.numPalyers = 0
+        self.player = 0
+        self.round = 0
+        self.roll = 0
+
 
     def InitPayers(self):
         self.pwindow = Tk()
-        self.TempFont = font.Font(size=16, width='bold', family='Consolas')
+        self.TempFont = font.Font(size=16) #, width='bold') # , family='Consolas')
         self.label = []
         self.entry = []
-        self.label.append(Label(self.pwindow, text='플레이어 박명수', font=self.TempFont))
+        self.label.append(Label(self.pwindow, text='플레이어 (박)명수', font=self.TempFont))
         self.label[0].grid(row=0, column=0)
 
         for i in range(1, 11):
@@ -39,19 +42,32 @@ class YahtzeeBoard:
             self.entry.append(Entry(self.pwindow, font=self.TempFont))
             self.entry[i].grid(row=i, column=1)
 
-        Button(self.pwindow, text='Yahtzee players ready !_!', font = self.TempFont, command=self.PlayersNames).grid(row=11, column=0)
+        Button(self.pwindow, text='Yahtzee players ready !_!', font = self.TempFont, command=self.playersNames).grid(row=11, column=0)
+
         self.pwindow.mainloop()
 
     def playersNames(self):
-        self.numPlayers = int(self.entry[0].get())
-        for i in range(1, self.numPalyers+1):
+        self.numPalyers = int(self.entry[0].get())
+
+        self.players = []
+        for i in range(1, self.numPalyers + 1):
             self.players.append(Player(str(self.entry[i].get())))
+
         self.pwindow.destroy()
+
+        self.numPalyers = 0
+        self.player = 0
+        self.round = 0
+        self.roll = 0
+
+
+
         self.initInterface()
 
     def initInterface(self):
         self.window = Tk("Yahtzee Game")
-        self.window.geometry("1600x800")
+        self.window.title("Yahtzee Game")
+        self.window.geometry("800x800+500+0")
         self.TempFont = font.Font(size=16, weight='bold', family='Consolas')
 
         for i in range(5):
@@ -79,8 +95,12 @@ class YahtzeeBoard:
                         self.fields[i-1][j]['state'] = 'disabled'
                         self.fields[i-1][j]['bg'] = 'light gray'
 
-        self.bottomLabel = Label(self.window, text=self.players[self.player].toString()+" turn, press Roll Dice Button", width=35, font=self.TempFont)
+        print(self.players)
+        self.bottomLabel = Label(self.window, text=self.players[self.player].toString() + " 차례: Roll Dice 버튼을 누르세요", font=self.TempFont) # , width=35
         self.bottomLabel.grid(row=self.TOTAL+2, column=0)
+
+        self.rollDiceListener()
+
         self.window.mainloop()
 
     def rollDiceListener(self):
@@ -93,14 +113,16 @@ class YahtzeeBoard:
             self.roll += 1
             self.rollDice.configure(text='Roll Again')
             self.bottomLabel.configure(text='pick fix dice and Roll Again')
-        elif self.roll ==2 :
+        elif self.roll == 2:
             self.bottomLabel.configure(text='pick category !_!')
             self.rollDice['state'] = 'disabled'
             self.rollDice['bg'] = 'light gray'
 
+
     def diceListener(self, row):
         self.diceButtons[row]['state'] = 'disabled'
         self.diceButtons[row]['bg'] = 'light gray'
+
 
     def categoryListener(self, row):
         score = Configuration.score(row, self.dice)
@@ -139,3 +161,4 @@ class YahtzeeBoard:
 
         pass
 
+YahtzeeBoard()
