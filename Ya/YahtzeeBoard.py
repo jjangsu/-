@@ -3,13 +3,15 @@ from tkinter import font
 import tkinter.messagebox
 from player import *
 from dice import *
-from configuration import *
+from ScoreConfi import *
+# import ScoreConfi
+
 
 class YahtzeeBoard:
     UPPERTOTAL = 6
     UPPERBONUS = 7
     LOWERTOTAL = 15
-    TOTAL = 16
+
     dice = []
     diceButtons = []
     fields = []
@@ -24,6 +26,8 @@ class YahtzeeBoard:
         self.player = 0
         self.round = 0
         self.roll = 0
+
+        self.TOTAL = 16
 
 
     def InitPayers(self):
@@ -55,10 +59,10 @@ class YahtzeeBoard:
 
         self.pwindow.destroy()
 
-        self.numPalyers = 0
         self.player = 0
         self.round = 0
         self.roll = 0
+        self.TOTAL = 16
 
 
 
@@ -72,6 +76,7 @@ class YahtzeeBoard:
 
         for i in range(5):
             self.dice.append(Dice())
+        self.scoreConfi = Configuration()
 
         self.rollDice = Button(self.window, text='Roll Dice', font=self.TempFont, command=self.rollDiceListener)
         self.rollDice.grid(row=0, column=0)
@@ -81,7 +86,7 @@ class YahtzeeBoard:
             self.diceButtons[i].grid(row=i+1, column=0)
 
         for i in range(self.TOTAL + 2):
-            Label(self.window, text=Configuration.configs[i], font=self.TempFont).grid(row=i, column=1)
+            Label(self.window, text=self.scoreConfi.configs[i], font=self.TempFont).grid(row=i, column=1)
             for j in range(self.numPalyers):
                 if i == 0:
                     Label(self.window, text=self.players[j].toString(), font=self.TempFont).grid(row=i, column=2+j)
@@ -119,20 +124,23 @@ class YahtzeeBoard:
             self.rollDice['bg'] = 'light gray'
 
 
+
+
     def diceListener(self, row):
         self.diceButtons[row]['state'] = 'disabled'
         self.diceButtons[row]['bg'] = 'light gray'
 
 
     def categoryListener(self, row):
-        score = Configuration.score(row, self.dice)
+        self.score = self.scoreConfi.score(row, self.dice)
+        print("점수 - " + str(self.score))
         index = row
         if row > 7:
             index = row - 2
 
-        self.players[self.player].setScore(score, index)
-        self.players[self.player].setAtUsed(index)
-        self.fields[row][self.player].configure(text=str(score))
+        self.players[self.player].setScore(self.score, index)
+        # self.players[self.player].setAtUsed(index)
+        self.fields[row][self.player].configure(text=str(self.score))
         self.fields[row][self.player]['state'] = 'disabled'
         self.fields[row][self.player]['bg'] = 'light gray'
 
