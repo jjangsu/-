@@ -2,6 +2,7 @@
 from tkinter import *
 from xml.dom.minidom import parse, parseString
 import spam
+import random
 
 from test import SearchRestArea
 from Facility import SelectRestAreaFacility, putXmlToSearchList
@@ -59,6 +60,8 @@ class RestArea:
 
         FoodList = findFoodtByName(RestAreaName)
 
+        self.canvas.create_image(0,0,image=self.eatPhoto[0], tags='grim')
+
         for i in range(len(FoodList)):
             if FoodList[i] is not '':
                 self.dataList.insert(i, FoodList[i][1])
@@ -77,7 +80,7 @@ class RestArea:
             price = tmp[0]
             tmp = price.split(',')
             print(tmp)
-            if len(tmp)>1:
+            if len(tmp) > 1:
                 price = int(tmp[0] + tmp[1])
             else:
                 price = int(price)
@@ -95,11 +98,7 @@ class RestArea:
         self.ClearDataBox()
         self.changSelectButtonColor()
 
-        # print("------------")
-        # print(RestAreaName)
-        # print(self.searchBox.get())
         GasStationList = SelectRestAreaGas(self.searchBox.get(), RestAreaName)
-        # print(GasStationList)
 
         self.canvas.delete('grim')
         i=1
@@ -316,6 +315,10 @@ class RestArea:
         self.window.configure(background=bgColor)
         # lemon chiffon  RosyBrown1 개이쁜 핑크임   thistle 개이쁜 보라색
         # 낫밷 powder blue
+
+        self.eatPhoto = []
+        self.photo = PhotoImage(file='resource\_mk.jpg')
+        self.eatPhoto.append(self.photo)
 
         # 우리 메인 로고
 
