@@ -3,6 +3,7 @@ from tkinter import *
 from xml.dom.minidom import parse, parseString
 import spam
 import random
+from PIL import ImageTk, Image
 
 from test import SearchRestArea
 from Facility import SelectRestAreaFacility, putXmlToSearchList
@@ -60,7 +61,7 @@ class RestArea:
 
         FoodList = findFoodtByName(RestAreaName)
 
-        self.canvas.create_image(0,0,image=self.eatPhoto[0], tags='grim')
+        self.canvas.create_image(139, 107, image=self.eatPhoto[random.randint(0,4)], tags='grim')
 
         for i in range(len(FoodList)):
             if FoodList[i] is not '':
@@ -317,8 +318,12 @@ class RestArea:
         # 낫밷 powder blue
 
         self.eatPhoto = []
-        self.photo = PhotoImage(file='resource\_mk.jpg')
-        self.eatPhoto.append(self.photo)
+        #self.photo = ImageTk.PhotoImage(Image.open('resource\_mk.jpg'))
+        self.eatPhoto.append(ImageTk.PhotoImage(Image.open('resource\_mk.jpg')))
+        self.eatPhoto.append(ImageTk.PhotoImage(Image.open('resource\_bjw.jpg')))
+        self.eatPhoto.append(ImageTk.PhotoImage(Image.open('resource\_hju.jpg')))
+        self.eatPhoto.append(ImageTk.PhotoImage(Image.open('resource\_hn.jpg')))
+        self.eatPhoto.append(ImageTk.PhotoImage(Image.open('resource\_hs.jpg')))
 
         # 우리 메인 로고
 
