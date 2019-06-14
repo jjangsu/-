@@ -24,9 +24,9 @@ class Configuration:
             s = self.scoreLargeStraight(d)
         if row == 13:
             s = self.scoreYahtzee(d)
+        if row == 14:
+            s = self.scoreChance(d)
         return s
-
-
 
     def scoreUpper(self, dice, num):
         cnt = 0
@@ -37,26 +37,30 @@ class Configuration:
         pass
 
     def scoreThreeOfKind(self, dice):
+        sum = 0
         for i in range(1, 6 + 1):
             cnt = 0
             for j in range(5):
                 if i == dice[j].getRoll():
                     cnt += 1
-                    print(cnt)
                 if cnt >= 3:
-                    return 17
+                    for a in range(5):
+                        sum += dice[a].getRoll()
+                    return sum
         return 0
         pass
 
     def scoreFourOfKind(self, dice):
+        sum = 0
         for i in range(1, 6 + 1):
             cnt = 0
             for j in range(5):
                 if i == dice[j].getRoll():
                     cnt += 1
-                    print(cnt)
                 if cnt >= 4:
-                    return 24
+                    for a in range(5):
+                        sum += dice[a].getRoll()
+                    return sum
 
         return 0
         pass
@@ -70,8 +74,12 @@ class Configuration:
         second = False
         if tmp[0] == tmp[1]:
             first = True
-        if tmp[2] == tmp[3] and tmp[3] == tmp[4]:
-            second = True
+            if tmp[2] == tmp[3] and tmp[3] == tmp[4]:
+                second = True
+        if tmp[0] == tmp[1] and tmp[1] == tmp[2]:
+            first = True
+            if tmp[3] == tmp[4]:
+                second = True
         if first and second:
             return 25
         return 0
@@ -82,17 +90,18 @@ class Configuration:
         for i in range(5):
             tmp.append(dice[i].getRoll())
         tmp.sort()
-        print(tmp)
+        # print(tmp)
         tmp2 = list(set(tmp))
-        print(tmp2)
+        # print(tmp2)
         sum = 0
         sum2 = 0
         if len(tmp2) >= 4:
             for i in range(3):
                 sum = sum + tmp2[i + 1] - tmp2[i]
-                sum2 = sum2 + tmp2[i + 2] - tmp2[i + 1]
                 if sum >= 3:
                     return 30
+            for i in range(2):
+                sum2 = sum2 + tmp2[i + 2] - tmp2[i + 1]
                 if sum2 >= 3:
                     return 30
 
@@ -117,13 +126,20 @@ class Configuration:
     def scoreYahtzee(self, dice):
         num = dice[0].getRoll()
         check = True
-        for i in range(1, 5):
+        for i in range(0, 5):
             if num != dice[i].getRoll():
                 check = False
         if check:
             return 50
         else:
             return 0
+        pass
+
+    def scoreChance(self, dice):
+        sum = 0
+        for i in range(len(dice)):
+            sum += dice[i].getRoll()
+        return sum
         pass
 
     def sumDie(self, d):
