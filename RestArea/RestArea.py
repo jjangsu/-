@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 from tkinter import *
 from xml.dom.minidom import parse, parseString
+import spam
+import random
+from PIL import ImageTk, Image
+
 from test import SearchRestArea
 from Facility import SelectRestAreaFacility, putXmlToSearchList
 from gasStation import SelectRestAreaGas
@@ -57,6 +61,8 @@ class RestArea:
 
         FoodList = findFoodtByName(RestAreaName)
 
+        self.canvas.create_image(139, 107, image=self.eatPhoto[random.randint(0,4)], tags='grim')
+
         for i in range(len(FoodList)):
             if FoodList[i] is not '':
                 self.dataList.insert(i, FoodList[i][1])
@@ -75,7 +81,7 @@ class RestArea:
             price = tmp[0]
             tmp = price.split(',')
             print(tmp)
-            if len(tmp)>1:
+            if len(tmp) > 1:
                 price = int(tmp[0] + tmp[1])
             else:
                 price = int(price)
@@ -93,20 +99,18 @@ class RestArea:
         self.ClearDataBox()
         self.changSelectButtonColor()
 
-        # print("------------")
-        # print(RestAreaName)
-        # print(self.searchBox.get())
         GasStationList = SelectRestAreaGas(self.searchBox.get(), RestAreaName)
-        # print(GasStationList)
 
         self.canvas.delete('grim')
+        i=1
         if GasStationList is not None:
             self.drawCanvase(GasStationList)
-
-        if GasStationList is not None:
-            self.dataInfo.insert(INSERT, "disel: " + GasStationList[1] + "\n")
-            self.dataInfo.insert(INSERT, "gasoline: " + GasStationList[2] + "\n")
-            self.dataInfo.insert(INSERT, "lpg: " + GasStationList[3] + "\n")
+            self.dataList.insert(i, "disel : " + GasStationList[i])
+            i+=1
+            self.dataList.insert(i, "gasoline : " + GasStationList[i])
+            i+=1
+            self.dataList.insert(i, "lpg : " + GasStationList[i])
+            self.dataInfo.insert(INSERT, "♬~"+spam.getrandomstr()+"~♬")
         else:
             self.dataInfo.insert(INSERT, "주유소 없음")
         MailList.append(GasStationList)
@@ -312,6 +316,14 @@ class RestArea:
         self.window.configure(background=bgColor)
         # lemon chiffon  RosyBrown1 개이쁜 핑크임   thistle 개이쁜 보라색
         # 낫밷 powder blue
+
+        self.eatPhoto = []
+        #self.photo = ImageTk.PhotoImage(Image.open('resource\_mk.jpg'))
+        self.eatPhoto.append(ImageTk.PhotoImage(Image.open('resource\_mk.jpg')))
+        self.eatPhoto.append(ImageTk.PhotoImage(Image.open('resource\_bjw.jpg')))
+        self.eatPhoto.append(ImageTk.PhotoImage(Image.open('resource\_hju.jpg')))
+        self.eatPhoto.append(ImageTk.PhotoImage(Image.open('resource\_hn.jpg')))
+        self.eatPhoto.append(ImageTk.PhotoImage(Image.open('resource\_hs.jpg')))
 
         # 우리 메인 로고
 
