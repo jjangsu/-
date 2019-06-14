@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from tkinter import *
 from xml.dom.minidom import parse, parseString
+import spam
+
 from test import SearchRestArea
 from Facility import SelectRestAreaFacility, putXmlToSearchList
 from gasStation import SelectRestAreaGas
@@ -100,13 +102,15 @@ class RestArea:
         # print(GasStationList)
 
         self.canvas.delete('grim')
+        i=1
         if GasStationList is not None:
             self.drawCanvase(GasStationList)
-
-        if GasStationList is not None:
-            self.dataInfo.insert(INSERT, "disel: " + GasStationList[1] + "\n")
-            self.dataInfo.insert(INSERT, "gasoline: " + GasStationList[2] + "\n")
-            self.dataInfo.insert(INSERT, "lpg: " + GasStationList[3] + "\n")
+            self.dataList.insert(i, "disel : " + GasStationList[i])
+            i+=1
+            self.dataList.insert(i, "gasoline : " + GasStationList[i])
+            i+=1
+            self.dataList.insert(i, "lpg : " + GasStationList[i])
+            self.dataInfo.insert(INSERT, "♬~"+spam.getrandomstr()+"~♬")
         else:
             self.dataInfo.insert(INSERT, "주유소 없음")
         MailList.append(GasStationList)
