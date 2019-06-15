@@ -10,7 +10,7 @@ class Configuration:
 
     def score(self, row, d):
         s = 0
-        if row >= 0 and row <= 6:
+        if row >= 0 and row < 6:
             return self.scoreUpper(d, row + 1)
         if row == 8:
             s = self.scoreThreeOfKind(d)
@@ -69,6 +69,8 @@ class Configuration:
         tmp = []
         for i in range(5):
             tmp.append(dice[i].getRoll())
+        if tmp.count(0) == 5:
+            return 0
         tmp.sort()
         first = False
         second = False
@@ -90,20 +92,16 @@ class Configuration:
         for i in range(5):
             tmp.append(dice[i].getRoll())
         tmp.sort()
-        # print(tmp)
         tmp2 = list(set(tmp))
-        # print(tmp2)
-        sum = 0
-        sum2 = 0
-        if len(tmp2) >= 4:
-            for i in range(3):
-                sum = sum + tmp2[i + 1] - tmp2[i]
-                if sum >= 3:
-                    return 30
-            for i in range(2):
-                sum2 = sum2 + tmp2[i + 2] - tmp2[i + 1]
-                if sum2 >= 3:
-                    return 30
+        if len(tmp2) == 4:
+            if tmp2[3] - tmp2[0] == 3:
+                return 30
+        # sum2 = 0
+        if len(tmp2) > 4:
+            if tmp2[3] - tmp2[0] == 3:
+                return 30
+            if tmp2[4] - tmp2[1] == 3:
+                return 30
 
         return 0
         pass
@@ -114,25 +112,32 @@ class Configuration:
             tmp.append(dice[i].getRoll())
         tmp.sort()
         tmp2 = list(set(tmp))
-        sum = 0
-        if len(tmp2) >= 5:
-            for i in range(4):
-                sum = sum + tmp2[i + 1] - tmp2[i]
-                if sum >= 4:
-                    return 40
+        # sum = 0
+        if len(tmp2) > 4:
+            if tmp2[4] - tmp2[0] == 4:
+                return 40
+            # for i in range(0, 4):
+            #     sum = sum + tmp2[i + 1] - tmp2[i]
+            #     if sum == 4:
+            #         return 40
         return 0
         pass
 
     def scoreYahtzee(self, dice):
+        t = []
+        for i in range(5):
+            t.append(dice[i].getRoll())
+        if t.count(0) == 5:
+            return 0
         num = dice[0].getRoll()
-        check = True
+        # check = True
         for i in range(0, 5):
             if num != dice[i].getRoll():
-                check = False
+                return 0
+            else:
+                check = True
         if check:
             return 50
-        else:
-            return 0
         pass
 
     def scoreChance(self, dice):

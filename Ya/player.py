@@ -11,6 +11,7 @@ class Player:
         self.score[index] = score
         self.used[index] = True
         pass
+
     def getUpperScore(self):
         s = 0
         for i in range(6):
@@ -24,7 +25,11 @@ class Player:
             s += self.score[i]
         return s
         pass
-    def getUsed(self):
+    def getUsed(self, index):
+        # print("--------------")
+        # for i in range(self.UPPER + self.LOWER):
+        #     print(self.used[i])
+        return self.used[index]
         pass
     def getTotalScore(self):
         pass
