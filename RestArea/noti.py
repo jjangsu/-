@@ -20,46 +20,46 @@ routeNoToName = {'경부선':'0010', '남해선':'0100', '광주대구선':'0120
                  '서울외곽순환선': '1000', '남해2지선':'1040', '서천공주선':'1510', '호남지선':'2510', '중부내륙지선':'4510'
                  }
 
-#http://data.ex.co.kr/exopenapi/business/curStateStation?serviceKey=jyWeFegnALTcwvSFHvgeaQYIhtirRuGHTyB5YYxZNpQmWoQGf7EQc5%2F9Jsb6vw1kxdc0QhsfiT78%2BEyDQKIEyQ%3D%3D&type=xml&oilCompany=AD&numOfRows=999&pageNo=1&routeCode=0010
 key = '	jyWeFegnALTcwvSFHvgeaQYIhtirRuGHTyB5YYxZNpQmWoQGf7EQc5%2F9Jsb6vw1kxdc0QhsfiT78%2BEyDQKIEyQ%3D%3D'
 TOKEN = '744836087:AAF-tPLgcH2YpTu-_VtG-9E7V9z24yCBtoE'
 MAX_MSG_LENGTH = 10
 baseurl = 'http://data.ex.co.kr/exopenapi/business/curStateStation?serviceKey=jyWeFegnALTcwvSFHvgeaQYIhtirRuGHTyB5YYxZNpQmWoQGf7EQc5%2F9Jsb6vw1kxdc0QhsfiT78%2BEyDQKIEyQ%3D%3D&type=xml&oilCompany=AD&numOfRows=999&pageNo=1&routeCode='
-#baseurl = 'http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcRHTrade?ServiceKey='+key
 bot = telepot.Bot(TOKEN)
 
 def getData(areaCode):
     res_list = []
     print('**********************')
     print(areaCode)
-    url = baseurl+routeNoToName.get(areaCode)
-    #print(routeNoToName.get(areaCode))
-    print(url)
-    res_body = urlopen(url).read()
-    print(res_body)
-    soup = BeautifulSoup(res_body, 'html.parser')
-    items = soup.findAll('list')
-    print("아이템즈다")
-    print(items)
-    for item in items:
-        print('**888888***')
-        print(item.text)
-        cleanr = re.compile('<.*?>')
-        item = re.sub(cleanr, '&', str(item))
-        print('***')
-        print(item)
-        parsed = item.split('&')
-        print('*')
-        print(parsed)
-        try:
-            row = parsed[20]+'휴게소 - '+parsed[2]+'방향, 디젤: '+parsed[4]+', 가솔린: '+parsed[6]+', lpg: '+parsed[8]
-            #row = parsed[3]+'/'+parsed[6]+'/'+parsed[7]+', '+parsed[4]+' '+parsed[5]+', '+parsed[8]+'m², '+parsed[11]+'F, '+parsed[1].strip()+'만원\n'
-        except IndexError:
-            row = item.replace('|', ',')
+    if routeNoToName.get(areaCode) is None:
+        return
+    else:
+        url = baseurl+routeNoToName.get(areaCode)
+        #print(routeNoToName.get(areaCode))
+        print(url)
+        res_body = urlopen(url).read()
+        print(res_body)
+        soup = BeautifulSoup(res_body, 'html.parser')
+        items = soup.findAll('list')
+        #print("아이템즈다")
+        #print(items)
+        for item in items:
+            #print('**888888***')
+            #print(item.text)
+            cleanr = re.compile('<.*?>')
+            item = re.sub(cleanr, '&', str(item))
+            #print('***')
+            #print(item)
+            parsed = item.split('&')
+            #print('*')
+            #print(parsed)
+            try:
+                row = parsed[20]+'휴게소 - '+parsed[2]+'방향, 디젤: '+parsed[4]+', 가솔린: '+parsed[6]+', lpg: '+parsed[8]
+            except IndexError:
+                row = item.replace('|', ',')
 
-        if row:
-            res_list.append(row.strip())
-    return res_list
+            if row:
+                res_list.append(row.strip())
+        return res_list
 
 def sendMessage(user, msg):
     try:
@@ -82,8 +82,8 @@ def run(date_param, param='11710'):
         user, param = data[0], routeNoToName.get(data[1])
         print(user, date_param, param)
         res_list = getData( param )
-        print('**************************')
-        print(param)
+        #print('**************************')
+        #print(param)
         msg = ''
         for r in res_list:
             try:
