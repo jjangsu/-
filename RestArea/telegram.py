@@ -39,7 +39,7 @@ def replyAptData(date_param, user, loc_param='11710'):
     if msg:
         noti.sendMessage( user, msg )
     else:
-        noti.sendMessage( user, '%s 기간에 해당하는 데이터가 없습니다.'%date_param )
+        noti.sendMessage( user, '그런 노선이 없슴다'%date_param )
 
 def save( user, loc_param ):
     conn = sqlite3.connect('users.db')
@@ -75,9 +75,6 @@ def handle(msg):
     if text.startswith('노선명') and len(args) > 1:
         print('try to 노선명', args[1])
         replyAptData(args[1], chat_id)
-    elif text.startswith('지역') and len(args)>1:
-        print('try to 지역', args[1])
-        replyAptData( '201705', chat_id, args[1] )
     elif text.startswith('저장')  and len(args)>1:
         print('try to 저장', args[1])
         save( chat_id, args[1] )
@@ -85,7 +82,7 @@ def handle(msg):
         print('try to 확인')
         check( chat_id )
     else:
-        noti.sendMessage(chat_id, '모르는 명령어입니다.\n지역 [지역번호], 저장 [지역번호], 확인 중 하나의 명령을 입력하세요.')
+        noti.sendMessage(chat_id, '노선명 [ex)경부선] 등의 명령을 입력하세요.')
 
 
 today = date.today()

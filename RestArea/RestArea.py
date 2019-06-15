@@ -127,6 +127,8 @@ class RestArea:
 
         self.canvas.delete('grim')
 
+        self.canvas.create_image(139, 107, image=self.etcPhoto[random.randint(0, 5)], tags='grim')
+
         FacilityList.clear()
         FacilityList = SelectRestAreaFacility(RestAreaName)
 
@@ -241,7 +243,7 @@ class RestArea:
         self.mailEntry = Entry(self.window)
         self.mailEntry.place(x=395, y=140)
 
-    def SearchRestAreaByName(self): #함수를 한번에 못넘기겠어서 만든 친굽니다 그 옆에 휴게소 목록 리스트 초기화하고 다시 받아서 넣어줍니다
+    def SearchRestAreaByName(self):
         global RestAreaList
         if RestAreaList is not None:
             RestAreaList.clear()
@@ -285,7 +287,6 @@ class RestArea:
             self.food()
         elif checkDataButton == 1:  #주유소
             self.GasStation()
-            # self.GasStation(RestAreaName)
         else:                       #편의시설
             self.Facility()
 
@@ -293,23 +294,16 @@ class RestArea:
 
 
     def initSearchCell(self):
-        # 검색창과 그 옆에 목록
-        # 검색창
         self.searchBox = Entry(self.window, width=30)
         self.searchBox.place(x=50, y=220)
 
         Button(self.window, text='search', command=self.SearchRestAreaByName, background=buttonColor).place(x=265, y=220)
-        # 검색 목록
-        #self.searchList = Text(self.window, width=30, height=5)
         self.searchList = Listbox(self.window, width=30, height=5)
         self.searchList.place(x=320, y=220)
         Button(self.window, text='select', command=self.SelectRestArea, background=buttonColor).place(x=535, y=220)
 
 
     def __init__(self):
-        #global restArea
-        #restArea = self
-
         self.window = Tk()
         self.window.title = 'ReatArea'
         self.window.geometry('600x750+500+0')
@@ -318,14 +312,22 @@ class RestArea:
         # 낫밷 powder blue
 
         self.eatPhoto = []
-        #self.photo = ImageTk.PhotoImage(Image.open('resource\_mk.jpg'))
         self.eatPhoto.append(ImageTk.PhotoImage(Image.open('resource\_mk.jpg')))
         self.eatPhoto.append(ImageTk.PhotoImage(Image.open('resource\_bjw.jpg')))
         self.eatPhoto.append(ImageTk.PhotoImage(Image.open('resource\_hju.jpg')))
         self.eatPhoto.append(ImageTk.PhotoImage(Image.open('resource\_hn.jpg')))
         self.eatPhoto.append(ImageTk.PhotoImage(Image.open('resource\_hs.jpg')))
 
-        # 우리 메인 로고
+
+
+
+        self.etcPhoto = []
+        self.etcPhoto.append(ImageTk.PhotoImage(Image.open('resource\_01.jpg')))
+        self.etcPhoto.append(ImageTk.PhotoImage(Image.open('resource\_02.jpg')))
+        self.etcPhoto.append(ImageTk.PhotoImage(Image.open('resource\_03.jpg')))
+        self.etcPhoto.append(ImageTk.PhotoImage(Image.open('resource\_04.jpg')))
+        self.etcPhoto.append(ImageTk.PhotoImage(Image.open('resource\_05.jpg')))
+        self.etcPhoto.append(ImageTk.PhotoImage(Image.open('resource\_06.jpg')))
 
 
         # Image.open
