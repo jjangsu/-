@@ -66,7 +66,7 @@ def putXmlToSearchList(strXml): # str을 그 원하는거만 찾아주는 친구
         tmpList.append(name.text)
         name = item.find("batchMenu")
         tmpList.append(name.text)
-        gmail.sendDataList.append("야호")
+        #gmail.sendDataList.append("야호")
 
         returnList.append(tmpList)
     # print(returnList)
