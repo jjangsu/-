@@ -55,11 +55,11 @@ def putXmlToSearchList(strXml, name): # str을 그 원하는거만 찾아주는 
                 tmp.append(event.text)
             else:
                 tmp.append("없음")
-        gmail.sendDataList.append(tmp)
+        #gmail.sendDataList.append(tmp)
     #if len(returnList) != 0:
         # print('*******************')
         #print(returnList)
-    print(gmail.sendDataList)
+    #print(gmail.sendDataList)
     return returnList #여기도 이렇게 리턴해줍니더
 
 

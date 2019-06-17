@@ -8,7 +8,7 @@ from PIL import ImageTk, Image
 from test import SearchRestArea
 from Facility import SelectRestAreaFacility, putXmlToSearchList
 from gasStation import SelectRestAreaGas
-from gmail import sendGmail
+import gmail
 from FacillityTest import findCon
 from Event import findEventByName
 from Food import getAllFoodData
@@ -56,6 +56,7 @@ class RestArea:
         checkDataButton = 0
         self.ClearDataBox()
         self.changSelectButtonColor()
+        gmail.sendDataList.clear()
 
         self.canvas.delete('grim')
 
@@ -66,7 +67,7 @@ class RestArea:
         for i in range(len(FoodList)):
             if FoodList[i] is not '':
                 self.dataList.insert(i, FoodList[i][1])
-        MailList.append(FoodList)
+                gmail.sendDataList.append(FoodList[i][1])
 
 
     def drawCanvase(self, GasStationList):
@@ -98,6 +99,7 @@ class RestArea:
         checkDataButton = 1
         self.ClearDataBox()
         self.changSelectButtonColor()
+        gmail.sendDataList.clear()
 
         GasStationList = SelectRestAreaGas(self.searchBox.get(), RestAreaName)
 
@@ -106,14 +108,16 @@ class RestArea:
         if GasStationList is not None:
             self.drawCanvase(GasStationList)
             self.dataList.insert(i, "disel : " + GasStationList[i])
+            gmail.sendDataList.append("disel : " + GasStationList[i] + '\n')
             i+=1
             self.dataList.insert(i, "gasoline : " + GasStationList[i])
+            gmail.sendDataList.append("gasoline : " + GasStationList[i] + '\n')
             i+=1
             self.dataList.insert(i, "lpg : " + GasStationList[i])
+            gmail.sendDataList.append("lpg : " + GasStationList[i] + '\n')
             self.dataInfo.insert(INSERT, "♬~"+spam.getrandomstr()+"~♬")
         else:
             self.dataInfo.insert(INSERT, "주유소 없음")
-        MailList.append(GasStationList)
 
 
     def Facility(self):
@@ -124,6 +128,7 @@ class RestArea:
         checkDataButton = 2
         self.ClearDataBox()
         self.changSelectButtonColor()
+        gmail.sendDataList.clear()
 
         self.canvas.delete('grim')
 
@@ -140,6 +145,9 @@ class RestArea:
                 self.dataInfo.insert(INSERT, "전화번호: " + data[3] + "\n")
                 self.dataInfo.insert(INSERT, "대표 메뉴: " + data[4] + "\n")
                 self.dataInfo.insert(INSERT, "브랜드: " + data[0] + "\n")
+                gmail.sendDataList.append("전화번호: " + data[3]+ '\n')
+                gmail.sendDataList.append("대표 메뉴: " + data[4]+'\n')
+                gmail.sendDataList.append("브랜드: " + data[0]+'\n')
                 for item in tmp:
                     if item is not '' and item not in convenienceList:
                         convenienceList.append(item)
@@ -148,7 +156,6 @@ class RestArea:
             if convenienceList[i] is not '':
                 # if convenienceList[i] not in self.dataList:
                 self.dataList.insert(i, convenienceList[i])
-        MailList.append(convenienceList)
 
     def showData(self): #이제 여기서 일을 쫌 해야겠죠
         global checkDataButton
@@ -226,14 +233,15 @@ class RestArea:
         self.eventList.delete('1.0', END)
         if EventList is not None:
             self.eventList.insert(INSERT, EventList)
-            MailList.append(EventList)
+            gmail.sendDataList.clear()
+            gmail.sendDataList.append(EventList)
         else:
             self.eventList.insert(INSERT, "이벤트 없음")
 
     def sendMail(self):
         global MailList
         rv = self.mailEntry.get()
-        sendGmail(rv, MailList)
+        gmail.sendGmail(rv, MailList)
 
     def intiSendGmail(self):
         # Gmail보내는 버튼
