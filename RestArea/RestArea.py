@@ -314,7 +314,7 @@ class RestArea:
     def __init__(self):
         self.window = Tk()
         self.window.title = 'ReatArea'
-        self.window.geometry('600x750+500+0')
+        self.window.geometry('600x750+100+0')
         self.window.configure(background=bgColor)
         # lemon chiffon  RosyBrown1 개이쁜 핑크임   thistle 개이쁜 보라색
         # 낫밷 powder blue
